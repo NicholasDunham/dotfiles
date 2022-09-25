@@ -301,36 +301,32 @@ I used to use Org-Roam, but I'm trying out Denote as a lightweight alternative. 
                                 ("s" "Shopping")
                                 ("sg" "Groceries" checkitem
                                  (file+olp "shopping.org" "Groceries")
-                                 "- [ ] %^{Item}"
-                                 :immediate-finish t)
+                                 "- [ ] %?"
+                                 :kill-buffer t)
                                 ("so" "Online" checkitem
                                  (file+olp "shopping.org" "Online shopping")
-                                 "- [ ] %^{Item}"
-                                 :immediate-finish t)
+                                 "- [ ] %?"
+                                 :kill-buffer t)
                                 ("sl" "Liquor" checkitem
                                  (file+olp "shopping.org" "Liquor")
-                                 "- [ ] %^{Item}"
-                                 :immediate-finish t)
+                                 "- [ ] %?"
+                                 :kill-buffer t)
                                 ("sm" "Miscellaneous" checkitem
                                  (file+olp "shopping.org" "Miscellaneous")
-                                 "- [ ] %^{Item}"
-                                 :immediate-finish t)
+                                 "- [ ] %?"
+                                 :kill-buffer t)
                                 ("st" "Later" checkitem
                                  (file+olp "shopping.org" "Later")
-                                 "- [ ] %^{Item}"
-                                 :immediate-finish t)
+                                 "- [ ] %?"
+                                 :kill-buffer t)
                                 ("n" "Note with Denote" plain
                                  (file denote-last-path)
                                  #'denote-org-capture
-                                 :no-save t
-                                 :immediate-finish nil
-                                 :kill-buffer t
-                                 :jump-to-captured t)
+                                 :kill-buffer t)
                                 ("j" "Journal" plain
                                  (function nd/org-journal-find-location)
                                  "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?"
-                                 :jump-to-captured t
-                                 :immediate-finish t))))
+                                 :kill-buffer))))
 #+end_src
 
 * Presenting and streaming
