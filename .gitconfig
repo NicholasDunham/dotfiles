@@ -1,0 +1,9 @@
+[user]
+	name = Nicholas Dunham
+	email = 11730795+NicholasDunham@users.noreply.github.com
+[github]
+	user = NicholasDunham
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
