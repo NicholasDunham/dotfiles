@@ -31,6 +31,8 @@ brew "imagemagick"
 brew "markdown"
 # Platform built on V8 to build network applications
 brew "node"
+# Tool for managing OCI containers and pods
+brew "podman"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -54,5 +56,7 @@ cask "font-fira-sans"
 cask "gimp"
 # Minimal installer for conda specific to conda-forge
 cask "miniforge"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Multimedia player
 cask "vlc"
