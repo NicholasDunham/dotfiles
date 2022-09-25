@@ -188,51 +188,6 @@ Make headings larger and bolder than paragraph text.
 
 *** Org custom agenda
 
-Keeping this here for now, but I think I'm moving to Org-super-agenda (which is the block that follows and supersedes this one).
-
-#+begin_src elisp
-(setq org-agenda-custom-commands
-      '(("A" "Daily agenda and top priority tasks"
-         ((tags-todo "+PRIORITY=A"
-                     ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled 'deadline))
-                      (org-agenda-block-separator nil)
-                      (org-agenda-overriding-header "Important tasks without a date\n")))
-          (todo "WAIT"
-                ((org-agenda-block-separator nil)
-                 (org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
-                 (org-agenda-overriding-header "\nUndated tasks on hold\n")))
-          (agenda ""
-                 ((org-agenda-block-separator nil)
-                  (org-agenda-start-day "+0d")
-                  (org-agenda-span 1)
-                  (org-deadline-warning-days 0)
-                  (org-scheduled-past-days 0)
-                  (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
-                  (org-agenda-format-date "%A %-e %B %Y")
-                  (org-agenda-overriding-header "\nDaily agenda\n")))
-          (agenda ""
-                  ((org-agenda-start-on-weekday nil)
-                   (org-agenda-start-day "+1d")
-                   (org-agenda-span 3)
-                   (org-deadline-warning-days 0)
-                   (org-agenda-block-separator nil)
-                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                   (org-agenda-overriding-header "\nNext three days\n")))
-          (agenda ""
-                  ((org-agenda-time-grid nil)
-                   (org-agenda-start-on-weekday nil)
-                   (org-agenda-start-day "+3d")
-                   (org-agenda-span 14)
-                   (org-agenda-show-all-dates nil)
-                   (org-deadline-warning-days 0)
-                   (org-agenda-block-separator nil)
-                   (org-agenda-entry-types '(:deadline))
-                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                   (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n")))))))
-#+end_src
-
-*** Org-super-agenda
-
 Trying this out for now.
 
 #+begin_src elisp
