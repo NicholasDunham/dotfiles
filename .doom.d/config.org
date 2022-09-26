@@ -280,6 +280,15 @@ I used to use Org-Roam, but I'm trying out Denote as a lightweight alternative. 
                                 "geography")))
 #+end_src
 
+** Org-chef
+
+Package for managing recipes in Org-mode.
+
+#+begin_src elisp
+(use-package! org-chef
+  :after org)
+#+end_src
+
 ** Capture templates
 
 #+begin_src elisp
@@ -312,6 +321,15 @@ I used to use Org-Roam, but I'm trying out Denote as a lightweight alternative. 
                                 ("n" "Note with Denote" plain
                                  (file denote-last-path)
                                  #'denote-org-capture
+                                 :kill-buffer t)
+                                ("c" "Cookbook")
+                                ("cc" "Capture recipe from web" entry
+                                 (file+olp "cookbook.org" "Unfiled")
+                                 "%(org-chef-get-recipe-from-url)"
+                                 :kill-buffer t)
+                                ("cm" "Enter recipe manually" entry
+                                 (file+olp "cookbook.org" "Unfiled")
+                                 "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n"
                                  :kill-buffer t)
                                 ("j" "Journal" plain
                                  (function nd/org-journal-find-location)

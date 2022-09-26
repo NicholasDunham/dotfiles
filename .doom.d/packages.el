@@ -54,3 +54,4 @@
 (package! mixed-pitch)
 (package! command-log-mode)
 (package! org-super-agenda)
+(package! org-chef)
