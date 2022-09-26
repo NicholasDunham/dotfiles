@@ -220,7 +220,7 @@ Trying this out for now.
                              :category "Inbox")
                             (:name "\nOn hold\n"
                              :todo "WAIT")))))))))
-  :init
+  :config
   (org-super-agenda-mode))
 #+end_src
 
