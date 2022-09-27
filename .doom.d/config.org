@@ -299,6 +299,10 @@ Package for managing recipes in Org-mode.
                                  (file "inbox.org")
                                  "* TODO %i%?\n:PROPERTIES:\n:CREATED: %U\n:END:\n:LOGBOOK:\n:END:"
                                  :kill-buffer t)
+                                ("n" "Note with Denote" plain
+                                 (file denote-last-path)
+                                 #'denote-org-capture
+                                 :kill-buffer t)
                                 ("s" "Shopping")
                                 ("sg" "Groceries" checkitem
                                  (file+olp "shopping.org" "Groceries")
@@ -319,10 +323,6 @@ Package for managing recipes in Org-mode.
                                 ("st" "Later" checkitem
                                  (file+olp "shopping.org" "Later")
                                  "- [ ] %?"
-                                 :kill-buffer t)
-                                ("n" "Note with Denote" plain
-                                 (file denote-last-path)
-                                 #'denote-org-capture
                                  :kill-buffer t)
                                 ("c" "Cookbook")
                                 ("cc" "Capture recipe from web" entry
