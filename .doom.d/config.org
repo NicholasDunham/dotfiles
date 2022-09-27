@@ -1,4 +1,5 @@
 #+title: Config
+#+OPTIONS: toc:2
 
 * General configuration
 
