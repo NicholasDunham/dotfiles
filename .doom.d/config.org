@@ -73,9 +73,10 @@ Set a nice big window on startup.
 I use visual line numbers everywhere, and I want Evil mode to respect those line numbers and jump the appropriate number of visual lines, even when folding and soft line wrapping are in use. The =evil-respect-visual-line-mode= setting makes this happen, but it must be run before Evil mode is loaded, which can't be done from =config.el=. Loading it from =init.el= works. I'm leaving it here as well, even though it's redundant/ineffective here, for documentation purposes.
 
 #+begin_src elisp
-(setq display-line-numbers-type 'visual
-      line-move-visual t
-      evil-respect-visual-line-mode t)
+(setq-default display-line-numbers-type 'visual
+              display-line-numbers-width 4
+              line-move-visual t
+              evil-respect-visual-line-mode t)
 #+end_src
 
 ** Annoyances
