@@ -299,6 +299,9 @@ Package for managing recipes in Org-mode.
                                  (file "inbox.org")
                                  "* TODO %i%?\n:PROPERTIES:\n:CREATED: %U\n:END:\n:LOGBOOK:\n:END:"
                                  :kill-buffer t)
+                                ("m" "Meeting notes" entry
+                                 (file "inbox.org")
+                                 "* %u: %^{Meeting title}\n:PROPERTIES:\n:CREATED: %U\n:ATTENDEES: \n:END:\n:LOGBOOK:\n:END:\n** %i%?\n** Action items\n*** ")
                                 ("n" "Note with Denote" plain
                                  (file denote-last-path)
                                  #'denote-org-capture
