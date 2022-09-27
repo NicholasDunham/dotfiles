@@ -392,10 +392,3 @@ Great way to quickly build a presentation, but the default Doom configuration do
 (add-hook! 'org-tree-slide-play-hook 'nd/org-tree-slide-custom-settings)
 
 #+end_src
-
-Still to do:
-
-1. Remove line numbers in presentation mode
-2. Remove the status bar or modeline or whatever it is at the bottom of the screen
-3. Either make the bullets line up with the text or remove them completely
-4. Hide the cursor
