@@ -1,4 +1,4 @@
-#+title: Config
+#+title: Doom Emacs Config
 #+OPTIONS: toc:2
 
 * General configuration
