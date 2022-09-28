@@ -1,0 +1,6 @@
+* TODO %i%?
+:PROPERTIES:
+:CREATED: %U
+:END:
+:LOGBOOK:
+:END:

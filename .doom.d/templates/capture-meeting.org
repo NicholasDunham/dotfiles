@@ -1,0 +1,10 @@
+* %u %^{Meeting title}
+:PROPERTIES:
+:CREATED: %U
+:ATTENDEES:
+:END:
+:LOGBOOK:
+:END:
+** %i%?
+** Action items
+***

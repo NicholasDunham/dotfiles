@@ -310,13 +310,16 @@ Package for managing recipes in Org-mode.
 
 #+begin_src elisp
 (after! org
-  (setq org-capture-templates '(("i" "Inbox" entry
+  (setq org-template-dir (nd/concat-path doom-user-dir "templates")
+        checkbox-template "- [ ] %?"
+        org-capture-templates `(("t" "Task" entry
                                  (file "inbox.org")
-                                 "* TODO %i%?\n:PROPERTIES:\n:CREATED: %U\n:END:\n:LOGBOOK:\n:END:"
+                                 (file ,(nd/concat-path org-template-dir "capture-task.org"))
                                  :kill-buffer t)
                                 ("m" "Meeting notes" entry
                                  (file "inbox.org")
-                                 "* %u: %^{Meeting title}\n:PROPERTIES:\n:CREATED: %U\n:ATTENDEES: \n:END:\n:LOGBOOK:\n:END:\n** %i%?\n** Action items\n*** ")
+                                 (file ,(nd/concat-path org-template-dir "capture-meeting.org"))
+                                 :kill-buffer t)
                                 ("n" "Note with Denote" plain
                                  (file denote-last-path)
                                  #'denote-org-capture
@@ -324,23 +327,23 @@ Package for managing recipes in Org-mode.
                                 ("s" "Shopping")
                                 ("sg" "Groceries" checkitem
                                  (file+olp "shopping.org" "Groceries")
-                                 "- [ ] %?"
+                                 checkbox-template
                                  :kill-buffer t)
                                 ("so" "Online" checkitem
                                  (file+olp "shopping.org" "Online shopping")
-                                 "- [ ] %?"
+                                 checkbox-template
                                  :kill-buffer t)
                                 ("sl" "Liquor" checkitem
                                  (file+olp "shopping.org" "Liquor")
-                                 "- [ ] %?"
+                                 checkbox-template
                                  :kill-buffer t)
                                 ("sm" "Miscellaneous" checkitem
                                  (file+olp "shopping.org" "Miscellaneous")
-                                 "- [ ] %?"
+                                 checkbox-template
                                  :kill-buffer t)
                                 ("st" "Later" checkitem
                                  (file+olp "shopping.org" "Later")
-                                 "- [ ] %?"
+                                 checkbox-template
                                  :kill-buffer t)
                                 ("c" "Cookbook")
                                 ("cc" "Capture recipe from web" entry
@@ -349,7 +352,7 @@ Package for managing recipes in Org-mode.
                                  :kill-buffer t)
                                 ("cm" "Enter recipe manually" entry
                                  (file+olp "cookbook.org" "Unfiled")
-                                 "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n"
+                                 (file ,(nd/concat-path org-template-dir "capture-recipe.org"))
                                  :kill-buffer t)
                                 ("j" "Journal" plain
                                  (function nd/org-journal-find-location)
