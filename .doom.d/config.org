@@ -333,23 +333,23 @@ Package for managing recipes in Org-mode.
                                 ("s" "Shopping")
                                 ("sg" "Groceries" checkitem
                                  (file+olp "shopping.org" "Groceries")
-                                 checkbox-template
+                                 ,checkbox-template
                                  :kill-buffer t)
                                 ("so" "Online" checkitem
                                  (file+olp "shopping.org" "Online shopping")
-                                 checkbox-template
+                                 ,checkbox-template
                                  :kill-buffer t)
                                 ("sl" "Liquor" checkitem
                                  (file+olp "shopping.org" "Liquor")
-                                 checkbox-template
+                                 ,checkbox-template
                                  :kill-buffer t)
                                 ("sm" "Miscellaneous" checkitem
                                  (file+olp "shopping.org" "Miscellaneous")
-                                 checkbox-template
+                                 ,checkbox-template
                                  :kill-buffer t)
                                 ("st" "Later" checkitem
                                  (file+olp "shopping.org" "Later")
-                                 checkbox-template
+                                 ,checkbox-template
                                  :kill-buffer t)
                                 ("c" "Cookbook")
                                 ("cc" "Capture recipe from web" entry
