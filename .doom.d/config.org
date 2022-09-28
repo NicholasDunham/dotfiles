@@ -187,6 +187,12 @@ Make headings larger and bolder than paragraph text.
 Trying this out for now.
 
 #+begin_src elisp
+(defun nd/agenda-auto-group-title-olp (item)
+    (-when-let* ((title (cadar (org-collect-keywords '("title"))))
+                 (ancestors (org-get-outline-path))
+                 (top (nth 0 (reverse ancestors))))
+      (concat title " → " top)))
+
 (use-package! org-super-agenda
   :after org-agenda
   :init
@@ -214,18 +220,23 @@ Trying this out for now.
                         (org-agenda-span 14)
                         (org-agenda-show-all-dates nil)
                         (org-agenda-entry-types '(:deadline))))
-            (alltodo "" ((org-agenda-overriding-header "\nUndated tasks\n")
+            (tags-todo "project"
+                       ((org-agenda-overriding-header "\nProjects")
                          (org-super-agenda-groups
-                          '((:discard (:deadline t :scheduled t))
-                            (:name "\nImportant\n"
-                             :priority "A")
-                            (:auto-parent t
-                             :name "\nActive work projects\n"
-                             :and (:category "Work" :tag "Project"))
-                            (:name "\nTo refile\n"
-                             :category "Inbox")
-                            (:name "\nOn hold\n"
-                             :todo "WAIT")))))))))
+                          '((:auto-map nd/agenda-auto-group-title-olp)))))
+            (alltodo ""
+                     ((org-agenda-overriding-header "")
+                      (org-super-agenda-groups
+                       '((:discard (:deadline t :scheduled t :tag "project"))
+                         (:name "Important"
+                          :priority "A"
+                          :order 1)
+                         (:name "Work tasks"
+                          :category "Work"
+                          :order 2)
+                         (:name "To refile"
+                          :category "Inbox"
+                          :order 3)))))))))
   :config
   (org-super-agenda-mode))
 #+end_src
