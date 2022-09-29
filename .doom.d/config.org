@@ -22,15 +22,7 @@ Expand file paths, regardless of how many elements you need to concat together a
 
 ** Fonts
 
-Doom exposes five (optional) variables for controlling fonts in Doom:
-
-+ =doom-font= -- the primary font to use
-+ =doom-variable-pitch-font= -- a non-monospace font (where applicable)
-+ =doom-big-font= -- used for =doom-big-font-mode=; use this for presentation or streaming
-+ =doom-unicode-font= -- for unicode glyphs
-+ =doom-serif-font= -- for the =fixed-pitch-serif= face
-
-See =C-h v doom-font= for documentation and more examples of what they accept.
+I'm using two different versions of Fira Code.
 
 #+begin_src elisp
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
@@ -47,8 +39,6 @@ I also customize a few faces to make my agenda prettier.
 #+end_src
 
 ** Themes
-
-I haven't spent much time testing any of the other Doom themes, but so far I've been fairly happy with the default.
 
 #+begin_src elisp
 (setq doom-theme 'doom-nord
