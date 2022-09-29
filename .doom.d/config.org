@@ -419,3 +419,36 @@ Great way to quickly build a presentation, but the default Doom configuration do
 (add-hook! 'org-tree-slide-play-hook 'nd/org-tree-slide-custom-settings)
 
 #+end_src
+
+* Other fun stuff
+
+** GPT-3 in Emacs
+
+OpenAI's GPT-3 API in Emacs!
+
+The =nd/openai-api-get-engines= helper function gets a list of available engines and prints it to the =*Messages*= buffer. It's good to check once in a while to see if OpenAI has released any new ones.
+
+So far, this is costing about a penny per run.
+
+#+begin_src elisp
+(use-package! openai-api
+  :config
+  (let* ((auth (car (auth-source-search :host "openai")))
+         (key (funcall (plist-get auth :secret))))
+    (setq openai-api-secret-key key))
+  (setq openai-api-engine "text-davinci-002"
+        openai-api-completion-params '((max_tokens . 1024)
+                                       (temperature . 0.7)
+                                       (frequency_penalty . 0)
+                                       (presence_penalty . 0)
+                                       (n . 1))))
+
+(defun nd/openai-api-get-engines (&optional no-cache)
+  "Write a list of available engines to the messages buffer"
+  (interactive)
+  (message "%s" (openai-api-get-engines no-cache)))
+
+(map! :leader
+      :desc "Response from GPT-3"
+      "i g" #'openai-api-complete-region)
+#+end_src

@@ -55,3 +55,5 @@
 (package! command-log-mode)
 (package! org-super-agenda)
 (package! org-chef)
+(package! openai-api
+  :recipe (:host github :repo "dangirsh/openai-api.el"))
