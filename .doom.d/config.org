@@ -420,23 +420,23 @@ The =nd/openai-api-get-engines= helper function gets a list of available engines
 
 So far, this is costing about a penny per run.
 
+I'm having trouble with the auth system for getting the secret key. Obviously I don't really understand how to use it. For now I'm setting an environment variable and reading that here, but going forward I want it to prompt me for a password the first time I run it, decrypt my =authsources.gpg= file, and use the key on subsequent runs. I know it's possible, I just need to understand how it works better.
+
 #+begin_src elisp
+(defun nd/openai-api-get-engines (&optional no-cache)
+  "Write a list of available engines to the messages buffer"
+  (interactive)
+  (message "%s" (openai-api-get-engines no-cache)))
+
 (use-package! openai-api
   :config
-  (let* ((auth (car (auth-source-search :host "openai")))
-         (key (funcall (plist-get auth :secret))))
-    (setq openai-api-secret-key key))
-  (setq openai-api-engine "text-davinci-002"
+  (setq openai-api-secret-key (getenv "OPENAI-KEY")
+        openai-api-engine "text-davinci-002"
         openai-api-completion-params '((max_tokens . 1024)
                                        (temperature . 0.7)
                                        (frequency_penalty . 0)
                                        (presence_penalty . 0)
                                        (n . 1))))
-
-(defun nd/openai-api-get-engines (&optional no-cache)
-  "Write a list of available engines to the messages buffer"
-  (interactive)
-  (message "%s" (openai-api-get-engines no-cache)))
 
 (map! :leader
       :desc "Response from GPT-3"
