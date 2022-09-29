@@ -18,6 +18,17 @@ Expand file paths, regardless of how many elements you need to concat together a
 (defun nd/concat-path (&rest parts)
   (cl-reduce (lambda (a b) (expand-file-name b a)) parts))
 #+end_src
+
+Get a password, and only a password. Thanks to David Wilson of System Crafters for this code.
+
+#+begin_src elisp
+(defun nd/lookup-password (&rest keys)
+  (let ((result (apply #' auth-source-search keys)))
+    (if result
+        (funcall (plist-get (car result) :secret))
+      nil)))
+#+end_src
+
 * Aesthetics
 
 ** Fonts
