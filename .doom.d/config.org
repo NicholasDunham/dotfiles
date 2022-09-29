@@ -429,9 +429,9 @@ OpenAI's GPT-3 API in Emacs!
 
 The =nd/openai-api-get-engines= helper function gets a list of available engines and prints it to the =*Messages*= buffer. It's good to check once in a while to see if OpenAI has released any new ones.
 
-So far, this is costing about a penny per run.
+The =nd/openai-api-complete-region= function is a wrapper around the openai-api plugin's built-in function of the same name. Its purpose is to set the =openai-api-secret-key= variable on run, if it's not already set. Previously I was trying to set that variable on startup, which was causing problems.
 
-I'm having trouble with the auth system for getting the secret key. Obviously I don't really understand how to use it. For now I'm setting an environment variable and reading that here, but going forward I want it to prompt me for a password the first time I run it, decrypt my =authsources.gpg= file, and use the key on subsequent runs. I know it's possible, I just need to understand how it works better.
+So far, this is costing about a penny per run.
 
 #+begin_src elisp
 (defun nd/openai-api-get-engines (&optional no-cache)
@@ -439,10 +439,15 @@ I'm having trouble with the auth system for getting the secret key. Obviously I 
   (interactive)
   (message "%s" (openai-api-get-engines no-cache)))
 
+(defun nd/openai-api-complete-region ()
+  (interactive)
+  (when (not openai-api-secret-key)
+    (setq openai-api-secret-key (nd/lookup-password :host "openai")))
+  (openai-api-complete-region))
+
 (use-package! openai-api
   :config
-  (setq openai-api-secret-key (getenv "OPENAI-KEY")
-        openai-api-engine "text-davinci-002"
+  (setq openai-api-engine "text-davinci-002"
         openai-api-completion-params '((max_tokens . 1024)
                                        (temperature . 0.7)
                                        (frequency_penalty . 0)
@@ -451,5 +456,5 @@ I'm having trouble with the auth system for getting the secret key. Obviously I 
 
 (map! :leader
       :desc "Response from GPT-3"
-      "i g" #'openai-api-complete-region)
+      "i g" #'nd/openai-api-complete-region)
 #+end_src
