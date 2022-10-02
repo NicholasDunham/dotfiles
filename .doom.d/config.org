@@ -51,6 +51,12 @@ I also customize a few faces to make my agenda prettier.
 
 ** Themes
 
+Customization of the Doom theme and modeline.
+
+One thing that took me a while to figure out was what the option =doom-modeline-hud= does. I saw it in a few people's dotfiles, but with no explanation of what its purpose was. The docstring just says, "Whether to use hud instead of default bar. It's only respected in GUI." That's not very helpful if you don't know what "hud" or "default bar" mean in this context. I tried turning it on, but didn't immediately notice a difference. So in case anyone anyone stumbles across this trying to figure it out, here's my explanation.
+
+By default, doom-modeline has a little colored bar on the far-left side of the modeline. Its primary purpose is to set the height of the modeline. You can change its width using the =doom-modeline-bar-width= variable, or (if you're using a GUI version of Emacs) you can switch it to a HUD, in which case it will show you approximately where you are in the document you're currently editing, sort of like a tiny scrollbar (except you can't actually use it to scroll through the file).
+
 #+begin_src elisp
 (setq doom-theme 'doom-nord
       doom-modeline-icon t
@@ -62,7 +68,8 @@ I also customize a few faces to make my agenda prettier.
       doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode)
       doom-modeline-buffer-encoding nil
       doom-modeline-checker-simple-format t
-      doom-modeline-time nil)
+      doom-modeline-time nil
+      doom-modeline-hud t)
 #+end_src
 
 ** Window
