@@ -57,3 +57,4 @@
 (package! org-chef)
 (package! openai-api
   :recipe (:host github :repo "dangirsh/openai-api.el"))
+(package! evil-cleverparens)

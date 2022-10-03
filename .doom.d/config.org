@@ -374,6 +374,18 @@ Package for managing recipes in Org-mode.
                                  :kill-buffer))))
 #+end_src
 
+* Programming language support
+
+** Lisp and its dialects
+
+In the past I've tried Parinfer (great but took too much control from me and made some things unnecessarily difficult) and Lispy/Lispyville (required a lot of configuration, and annoyed me right off the bat by breaking the =jk -> Esc= mapping). Now I'm trying evil-cleverparens.
+
+#+begin_src elisp
+(add-hook!
+ '(emacs-lisp-mode-hook lisp-mode-hook clojure-mode-hook)
+ '(smartparens-strict-mode evil-cleverparens-mode))
+#+end_src
+
 * Presenting and streaming
 ** Command log frame
 I adapted this from David Wilson's dotfiles.
