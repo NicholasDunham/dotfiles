@@ -460,7 +460,7 @@ So far, this is costing about a penny per run.
 
 (defun nd/openai-api-complete-region ()
   (interactive)
-  (when (not openai-api-secret-key)
+  (unless openai-api-secret-key
     (setq openai-api-secret-key (nd/lookup-password :host "openai")))
   (openai-api-complete-region))
 
