@@ -267,6 +267,16 @@ Avoid auto-completion in Org mode.
 (add-hook! org-mode (nd/adjust-org-company-backends))
 #+end_src
 
+I occasionally get the following error when opening Org Agenda: =org-element--cache: Unregistered buffer modifications detected. Resetting.= It doesn't seem to cause any problems displaying the agenda, and I'm not sure yet what's causing it---maybe manual edits to TODO entries rather than using Org's TODO management functions, but I haven't verified that, and it seems like the warning sometimes appears when I haven't made any changes at all.
+
+There are a couple of ways I know of to get rid of the warning: add the warning type to =warning-suppress-types=, or disable caching.
+
+For now, I'm going with suppressing the warning. I might try disabling caching later, just to compare the speed. I suspect that on any reasonably modern system, caching isn't noticeably speeding up Org.
+
+#+begin_src elisp
+(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
+#+end_src
+
 ** Org-journal
 
 *** General
