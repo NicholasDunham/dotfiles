@@ -460,7 +460,9 @@ The =nd/openai-api-get-engines= helper function gets a list of available engines
 
 The =nd/openai-api-complete-region= function is a wrapper around the openai-api plugin's built-in function of the same name. Its purpose is to set the =openai-api-secret-key= variable on run, if it's not already set. Previously I was trying to set that variable on startup, which was causing problems.
 
-So far, this is costing about a penny per run.
+To use, highlight a prompt and run the =nd/openai-api-complete-region= function (I have this mapped to =SPC-i-g=). The response will be inserted on the next line.
+
+So far, using these settings, this is costing about a penny per run on average.
 
 #+begin_src elisp
 (defun nd/openai-api-get-engines (&optional no-cache)
