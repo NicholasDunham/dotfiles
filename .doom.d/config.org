@@ -277,6 +277,15 @@ For now, I'm going with suppressing the warning. I might try disabling caching l
 (setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
 #+end_src
 
+=checkdoc= is a useful linter, but not when editing source blocks in Org files.
+
+#+begin_src elisp
+(defun nd/disable-flycheck-in-org-src-block ()
+  (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
+(add-hook 'org-src-mode-hook 'nd/disable-flycheck-in-org-src-block)
+#+end_src
+
 ** Org-journal
 
 *** General
