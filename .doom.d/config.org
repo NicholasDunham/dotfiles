@@ -33,7 +33,7 @@ Get a password, and only a password. Thanks to David Wilson of System Crafters f
 
 ** Fonts
 
-I'm using two different versions of Fira Code.
+I'm using two different versions of Fira Code, one proportional and one monospace.
 
 #+begin_src elisp
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
