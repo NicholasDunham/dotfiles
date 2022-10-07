@@ -1,3 +1,4 @@
+tap "1password/tap"
 tap "aws/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -7,20 +8,22 @@ tap "homebrew/services"
 tap "railwaycat/emacsmacport"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
 # Cross-platform make
 brew "cmake"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Generic library support script
+brew "libtool"
+# Sound and music computing system
+brew "csound"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
 brew "git"
-# Generic library support script
-brew "libtool"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # GNU grep, egrep and fgrep
@@ -45,6 +48,8 @@ brew "tree"
 brew "zsh"
 # Copilot CLI - build, release and operate your container apps on AWS
 brew "aws/tap/copilot-cli"
+# Command-line helper for the 1Password password manager
+cask "1password-cli"
 # Multi-track audio editor and recorder
 cask "audacity"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
