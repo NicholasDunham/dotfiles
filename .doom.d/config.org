@@ -286,6 +286,17 @@ For now, I'm going with suppressing the warning. I might try disabling caching l
 (add-hook 'org-src-mode-hook 'nd/disable-flycheck-in-org-src-block)
 #+end_src
 
+I want to log when I refile a task, but not when I refile it immediately from the capture buffer. This advice function sets =org-log-refile= to =nil= only when refiling from a capture buffer.
+
+Weirdly, this also seems to solve a different problem I was having when refiling from the capture buffer: the buffer and the frame it was open in weren't closing when I refiled after capturing. In other words, if I captured to my inbox with =C-c C-c=, the buffer closed as expected, but if refiled the capture with =C-c C-w=, the capture buffer stayed open. That's no longer happening since I added this advice. I don't know why, but it's a nice bonus.
+
+#+begin_src elisp
+(define-advice org-capture-refile (:around (oldfunc &rest args) org-disable-log-refile)
+  "Set `org-log-refile' to nil while capturing."
+  (let ((org-log-refile nil))
+    (apply oldfunc args)))
+#+end_src
+
 ** Org-journal
 
 *** General
