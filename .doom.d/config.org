@@ -424,6 +424,8 @@ In the past I've tried Parinfer (great but took too much control from me and mad
 (add-hook!
  '(emacs-lisp-mode-hook lisp-mode-hook clojure-mode-hook)
  '(smartparens-strict-mode evil-cleverparens-mode))
+
+(setq evil-move-beyond-eol t)
 #+end_src
 
 * Presenting and streaming
