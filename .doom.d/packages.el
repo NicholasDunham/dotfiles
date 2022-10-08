@@ -58,3 +58,4 @@
 (package! openai-api
   :recipe (:host github :repo "dangirsh/openai-api.el"))
 (package! evil-cleverparens)
+(package! org-sticky-header)

@@ -330,6 +330,16 @@ I used to use Org-Roam, but I'm trying out Denote as a lightweight alternative. 
                                 "geography")))
 #+end_src
 
+** Org-sticky-header
+
+#+begin_src elisp
+(use-package! org-sticky-header
+  :after org
+  :config
+  (add-hook! 'org-mode-hook 'org-sticky-header-mode)
+  (setq org-sticky-header-full-path 'full))
+#+end_src
+
 ** Org-chef
 
 Package for managing recipes in Org-mode.
