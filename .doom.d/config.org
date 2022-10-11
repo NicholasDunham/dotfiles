@@ -521,3 +521,13 @@ So far, using these settings, this is costing about a penny per run on average.
       :desc "Response from GPT-3"
       "i g" #'nd/openai-api-complete-region)
 #+end_src
+
+** Csound
+
+#+begin_src elisp
+(use-package! csound-mode
+  :mode (("\\.csd\\'" . csound-mode)
+         ("\\.orc\\'" . csound-mode)
+         ("\\.sco\\'" . csound-mode)
+         ("\\.udo\\'" . csound-mode)))
+#+end_src
