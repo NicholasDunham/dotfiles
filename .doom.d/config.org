@@ -187,6 +187,7 @@ Make headings larger and bolder than paragraph text.
                           '("inbox.org"
                             "emacs.org"
                             "work.org"
+                            "lawsuit.org"
                             "personal.org")
                           (directory-files-recursively
                            (nd/concat-path org-directory "work-projects")
