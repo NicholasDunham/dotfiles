@@ -107,7 +107,7 @@ By default, Doom Emacs replaces Vim's substitute command with Evil-snipe. I pref
 
 #+begin_src elisp
 (after! org
-  (setq org-directory "~/Projects/org/"))
+  (setq org-directory "~/org/"))
 #+end_src
 
 ** Org beautification
