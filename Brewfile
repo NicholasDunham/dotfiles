@@ -6,6 +6,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "railwaycat/emacsmacport"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Cross-platform make
@@ -55,9 +57,15 @@ cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
 # Free and open-source image editor
 cask "gimp"
+# Web browser
+cask "google-chrome"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Minimal installer for conda specific to conda-forge
 cask "miniforge"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
+# Utility to hide the notch
+cask "topnotch"
 # Multimedia player
 cask "vlc"
