@@ -69,6 +69,8 @@ cask "miniforge"
 cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Music streaming service
+cask "spotify"
 # Utility to hide the notch
 cask "topnotch"
 # Multimedia player
