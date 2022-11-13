@@ -50,6 +50,8 @@ cask "1password"
 cask "1password-cli"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Menu bar icon organizer
+cask "bartender"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac"
 # Developer targeted fonts with a high number of glyphs
@@ -65,6 +67,8 @@ cask "iterm2"
 cask "miniforge"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Utility to hide the notch
 cask "topnotch"
 # Multimedia player
