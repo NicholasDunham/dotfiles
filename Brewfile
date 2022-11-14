@@ -65,6 +65,8 @@ cask "google-chrome"
 cask "iterm2"
 # Minimal installer for conda specific to conda-forge
 cask "miniforge"
+# Home media player
+cask "plex"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
 # Control your tools with a few keystrokes
