@@ -6,14 +6,16 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "railwaycat/emacsmacport"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
 # Cross-platform make
 brew "cmake"
 # Sound and music computing system
 brew "csound"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
