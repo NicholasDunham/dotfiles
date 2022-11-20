@@ -242,14 +242,18 @@ Trying this out for now.
                        ((org-agenda-overriding-header "\n\nProjects")
                          (org-super-agenda-groups
                           '((:auto-map nd/agenda-auto-group-title-olp)))))
+           (tags-todo "education"
+                       ((org-agenda-overriding-header "\n\nEducation")
+                         (org-super-agenda-groups
+                          '((:auto-map nd/agenda-auto-group-title-olp)))))
             (alltodo ""
                      ((org-agenda-overriding-header "\n\nOther tasks")
                       (org-super-agenda-groups
-                       '((:discard (:deadline t :scheduled t :tag "project"))
-                         (:name "Important"
+                       '((:discard (:deadline t :scheduled t :tag "project" :tag "education"))
+                         (:name "Important and unscheduled"
                           :priority "A"
                           :order 1)
-                         (:name "Work tasks"
+                         (:name "Miscellaneous work tasks"
                           :category "Work"
                           :order 2)
                          (:name "To refile"
