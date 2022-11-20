@@ -241,11 +241,13 @@ Trying this out for now.
             (tags-todo "project"
                        ((org-agenda-overriding-header "\n\nProjects")
                          (org-super-agenda-groups
-                          '((:auto-map nd/agenda-auto-group-title-olp)))))
+                          '((:discard (:deadline t :scheduled t))
+                            (:auto-map nd/agenda-auto-group-title-olp)))))
            (tags-todo "education"
                        ((org-agenda-overriding-header "\n\nEducation")
                          (org-super-agenda-groups
-                          '((:auto-map nd/agenda-auto-group-title-olp)))))
+                          '((:discard (:deadline t :scheduled t))
+                            (:auto-map nd/agenda-auto-group-title-olp)))))
             (alltodo ""
                      ((org-agenda-overriding-header "\n\nOther tasks")
                       (org-super-agenda-groups
@@ -256,9 +258,12 @@ Trying this out for now.
                          (:name "Miscellaneous work tasks"
                           :category "Work"
                           :order 2)
+                         (:name "Household chores"
+                          :tag "chore"
+                          :order 3)
                          (:name "To refile"
                           :category "Inbox"
-                          :order 3)))))))))
+                          :order 4)))))))))
   :config
   (org-super-agenda-mode))
 #+end_src
