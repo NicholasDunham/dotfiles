@@ -191,6 +191,9 @@ Make headings larger and bolder than paragraph text.
                             "personal.org")
                           (directory-files-recursively
                            (nd/concat-path org-directory "work-projects")
+                           "\\.org$")
+                          (directory-files-recursively
+                           (nd/concat-path org-directory "education-projects")
                            "\\.org$"))
         org-refile-targets '((nil :maxlevel . 3)
                              (org-agenda-files :maxlevel . 3)
