@@ -40,6 +40,8 @@ brew "ripgrep"
 brew "shellcheck"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Simplified and community-driven man pages
+brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # UNIX shell (command interpreter)
