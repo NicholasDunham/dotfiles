@@ -67,18 +67,34 @@ cask "gimp"
 cask "google-chrome"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Interface for reading and syncing eBooks
+cask "kindle"
 # Minimal installer for conda specific to conda-forge
 cask "miniforge"
+# Set of tools to create, alter and inspect Matroska files (MKV)
+cask "mkvtoolnix"
+# App to write, plan, collaborate, and get organized
+cask "notion"
+# Verify system files structure, run miscellaneous maintenance and more
+cask "onyx"
 # Home media player
 cask "plex"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Digital audio production application
+cask "reaper"
+# Tool for sending personal documents to Kindles from Macs
+cask "send-to-kindle"
+# Team communication and collaboration software
+cask "slack"
 # Music streaming service
 cask "spotify"
 # Utility to hide the notch
 cask "topnotch"
+# Open-source code editor
+cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Video communication and virtual meeting platform
