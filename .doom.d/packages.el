@@ -60,3 +60,4 @@
 (package! evil-cleverparens)
 (package! org-sticky-header)
 (package! atomic-chrome)
+(package! csound-mode)

@@ -543,3 +543,9 @@ Allows me to edit text areas on the web using Emacs. Relies on the [[https://chr
 (use-package! atomic-chrome
   :config (atomic-chrome-start-server))
 #+end_src
+
+** Csound-mode
+
+#+begin_src elisp
+(use-package! csound-mode)
+#+end_src
