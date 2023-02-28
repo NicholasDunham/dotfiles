@@ -34,6 +34,8 @@ brew "markdown"
 brew "node"
 # Tool for managing OCI containers and pods
 brew "podman"
+# Software environment for statistical computing
+brew "r"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -44,6 +46,8 @@ brew "stow"
 brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Library to create, extract, and modify Windows Imaging files
+brew "wimlib"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Copilot CLI - build, release and operate your container apps on AWS
@@ -56,6 +60,8 @@ cask "1password-cli"
 cask "audacity"
 # Menu bar icon organizer
 cask "bartender"
+# Voice and text chat software
+cask "discord"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac"
 # Developer targeted fonts with a high number of glyphs
@@ -69,14 +75,22 @@ cask "google-chrome"
 cask "iterm2"
 # Interface for reading and syncing eBooks
 cask "kindle"
+# Remote desktop client
+cask "microsoft-remote-desktop"
 # Minimal installer for conda specific to conda-forge
 cask "miniforge"
 # Set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix"
+# Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
+cask "mouse-fix"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
+# Visual programming language for multimedia
+cask "pd"
 # Home media player
 cask "plex"
 # Browse, manage, inspect containers and images
@@ -85,17 +99,25 @@ cask "podman-desktop"
 cask "raycast"
 # Digital audio production application
 cask "reaper"
+# Data science software focusing on R and Python
+cask "rstudio"
 # Tool for sending personal documents to Kindles from Macs
 cask "send-to-kindle"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
 cask "spotify"
+# Unpacks archive files
+cask "the-unarchiver"
 # Utility to hide the notch
 cask "topnotch"
+# Open-source virtual modular synthesizer
+cask "vcv-rack"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Simple menu bar app to download YouTube movies
+cask "youtube-downloader"
 # Video communication and virtual meeting platform
 cask "zoom"
