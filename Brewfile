@@ -18,6 +18,10 @@ brew "csound"
 brew "deno"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Fast, simple, recursive content discovery tool written in Rust
+brew "feroxbuster"
+# Fast web fuzzer written in Go
+brew "ffuf"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -30,8 +34,12 @@ brew "grep"
 brew "imagemagick"
 # Text-to-HTML conversion tool
 brew "markdown"
+# Port scanning utility for large networks
+brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# HTTP/DNS scanner configurable via YAML templates
+brew "nuclei"
 # Tool for managing OCI containers and pods
 brew "podman"
 # Software environment for statistical computing
@@ -60,10 +68,18 @@ cask "1password-cli"
 cask "audacity"
 # Menu bar icon organizer
 cask "bartender"
+# Web security testing toolkit
+cask "burp-suite"
+# E-books management software
+cask "calibre"
+# Flexible space to create your own interactive software
+cask "cycling74-max"
 # Voice and text chat software
 cask "discord"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac"
+# Web browser
+cask "firefox"
 # Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
 cask "font-fira-sans"
@@ -103,10 +119,14 @@ cask "reaper"
 cask "rstudio"
 # Tool for sending personal documents to Kindles from Macs
 cask "send-to-kindle"
+# EPUB ebook editor
+cask "sigil"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
 cask "spotify"
+# Modular synthesizer
+cask "sunvox"
 # Unpacks archive files
 cask "the-unarchiver"
 # Utility to hide the notch
@@ -121,3 +141,21 @@ cask "vlc"
 cask "youtube-downloader"
 # Video communication and virtual meeting platform
 cask "zoom"
+vscode "bradlc.vscode-tailwindcss"
+vscode "csstools.postcss"
+vscode "eamodio.gitlens"
+vscode "esbenp.prettier-vscode"
+vscode "formulahendry.auto-rename-tag"
+vscode "GitHub.copilot-labs"
+vscode "GitHub.copilot-nightly"
+vscode "GitHub.vscode-pull-request-github"
+vscode "hashicorp.terraform"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.isort"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-vscode-remote.remote-containers"
+vscode "nicollasr.vscode-streamdeck"
+vscode "PulkitGangwar.nextjs-snippets"
+vscode "ritwickdey.LiveServer"
+vscode "vscodevim.vim"
