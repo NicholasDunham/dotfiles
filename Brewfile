@@ -8,14 +8,22 @@ tap "homebrew/services"
 tap "railwaycat/emacsmacport"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Bash Automated Testing System
+brew "bats-core"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
+# Checks for bashisms in shell scripts
+brew "checkbashisms"
 # Cross-platform make
 brew "cmake"
 # Sound and music computing system
 brew "csound"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Command-line tool to interact with exercism.io
+brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Fast, simple, recursive content discovery tool written in Rust
@@ -30,6 +38,8 @@ brew "git"
 brew "gnupg"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Improved top (interactive process viewer)
+brew "htop"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Text-to-HTML conversion tool
@@ -64,6 +74,8 @@ brew "aws/tap/copilot-cli"
 cask "1password"
 # Command-line helper for the 1Password password manager
 cask "1password-cli"
+# Memory training application
+cask "anki"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Menu bar icon organizer
@@ -101,8 +113,6 @@ cask "mkvtoolnix"
 cask "mouse-fix"
 # App to write, plan, collaborate, and get organized
 cask "notion"
-# Open-source software for live streaming and screen recording
-cask "obs"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
 # Visual programming language for multimedia
@@ -111,6 +121,8 @@ cask "pd"
 cask "plex"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
+# Command-line shell and scripting language
+cask "powershell"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Digital audio production application
@@ -137,6 +149,8 @@ cask "vcv-rack"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Desktop client for WhatsApp
+cask "whatsapp"
 # Simple menu bar app to download YouTube movies
 cask "youtube-downloader"
 # Video communication and virtual meeting platform
@@ -146,16 +160,27 @@ vscode "csstools.postcss"
 vscode "eamodio.gitlens"
 vscode "esbenp.prettier-vscode"
 vscode "formulahendry.auto-rename-tag"
+vscode "foxundermoon.shell-format"
+vscode "GitHub.copilot"
+vscode "GitHub.copilot-chat"
 vscode "GitHub.copilot-labs"
-vscode "GitHub.copilot-nightly"
 vscode "GitHub.vscode-pull-request-github"
+vscode "golang.go"
 vscode "hashicorp.terraform"
+vscode "jetmartin.bats"
+vscode "lizebang.bash-extension-pack"
+vscode "mads-hartmann.bash-ide-vscode"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode.powershell"
 vscode "nicollasr.vscode-streamdeck"
 vscode "PulkitGangwar.nextjs-snippets"
+vscode "Remisa.shellman"
 vscode "ritwickdey.LiveServer"
+vscode "rogalmic.bash-debug"
+vscode "rpinski.shebang-snippets"
+vscode "timonwong.shellcheck"
 vscode "vscodevim.vim"
