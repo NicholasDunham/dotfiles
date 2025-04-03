@@ -1,0 +1,27 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+._*
+
+# Editor temp/backup files
+*~
+\#*\#
+.\#*
+*.swp
+*.swo
+*.bak
+
+# Emacs Projectile and Magit
+.projectile-cache.eld
+projectile-bookmarks.eld
+/.git/MAGIT/
+
+# VS Code and Cursor
+.vscode/
+
+# Finder and macOS metadata
+.Icon?
+.Trashes
+.metadata_never_index
+.TemporaryItems
+
