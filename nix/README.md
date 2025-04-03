@@ -6,14 +6,8 @@ A comprehensive, modular Nix configuration for managing macOS machines with nix-
 
 - [Overview](#overview)
 - [Directory Structure](#directory-structure)
-- [Complete Setup Guide](#complete-setup-guide)
-  - [Installing Nix](#installing-nix)
-  - [Cloning This Configuration](#cloning-this-configuration)
-  - [Building Your System](#building-your-system)
-- [Daily Usage](#daily-usage)
-  - [Rebuilding Your System](#rebuilding-your-system)
-  - [Managing Modules](#managing-modules)
-  - [Updating Packages](#updating-packages)
+- [Using Profiles](#using-profiles)
+- [Managing Modules](#managing-modules)
 - [Customization](#customization)
   - [Adding Packages](#adding-packages)
   - [Creating New Modules](#creating-new-modules)
@@ -56,109 +50,49 @@ nix/
 │   ├── go.nix           # Go development environment
 │   ├── javascript.nix   # JavaScript/Node.js development
 │   └── clojure.nix      # Clojure development environment
-├── scripts/             # Helper scripts
-│   └── rebuild.sh       # Rebuild script with module management
 └── flake.nix            # Main entry point
 ```
 
-## Complete Setup Guide
+## Using Profiles
 
-### Installing Nix
+This configuration supports multiple machine profiles, with two main ones pre-configured:
 
-1. Install Nix using the Determinate Systems installer:
+- **home**: Personal MacBook configuration
+- **work/span**: Work MacBook configuration
 
-```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
-
-2. Restart your terminal or source your profile:
-
-```bash
-source ~/.zshrc
-```
-
-3. Verify Nix is working:
-
-```bash
-nix --version
-```
-
-### Cloning This Configuration
-
-1. Create the config directory and clone this repository:
-
-```bash
-mkdir -p ~/.config
-cd ~/.config
-git clone <your-repository-url> nix
-cd nix
-```
-
-2. Make the rebuild script executable:
-
-```bash
-chmod +x scripts/rebuild.sh
-```
-
-### Building Your System
-
-Choose the appropriate profile for your machine:
+You can select which profile to build using the rebuild script:
 
 ```bash
 # For personal MacBook
-./scripts/rebuild.sh home
+rebuild.sh home
 
 # For work MacBook
-./scripts/rebuild.sh work
+rebuild.sh work
 ```
 
-This will:
+The script will automatically translate these profile names to the actual hostnames configured in the flake.
 
-1. Build the nix-darwin configuration
-2. Apply the configuration to your system
-3. Set up your shell, packages, and system preferences
+## Managing Modules
 
-The first build may take some time as it downloads and builds all packages.
-
-## Daily Usage
-
-### Rebuilding Your System
-
-After making changes to your configuration, rebuild your system:
-
-```bash
-# Basic rebuild for your profile
-./scripts/rebuild.sh home
-
-# Rebuild with profile name based on your hostname
-./scripts/rebuild.sh
-```
-
-### Managing Modules
-
-Enable or disable development environments:
+This configuration uses a modular approach where development environments can be enabled or disabled as needed:
 
 ```bash
 # Enable Python environment
-./scripts/rebuild.sh home "" python enable
+rebuild.sh home "" python enable
 
 # Disable Rust environment
-./scripts/rebuild.sh home "" rust disable
+rebuild.sh home "" rust disable
 
 # Enable JavaScript environment on work machine
-./scripts/rebuild.sh work "" javascript enable
+rebuild.sh work "" javascript enable
 ```
 
-### Updating Packages
-
-Update your system with the latest packages:
+To update packages and rebuild:
 
 ```bash
 # Update and rebuild
-./scripts/rebuild.sh home true
+rebuild.sh home update
 ```
-
-This pulls the latest changes from your flake inputs before rebuilding.
 
 ## Customization
 
@@ -241,7 +175,7 @@ in {
 3. Enable your new module:
 
 ```bash
-./scripts/rebuild.sh home "" java enable
+rebuild.sh home "" java enable
 ```
 
 ### Adding a New Machine
@@ -280,14 +214,14 @@ darwinConfigurations."new-hostname" = darwin.lib.darwinSystem {
 4. Rebuild with:
 
 ```bash
-./scripts/rebuild.sh new-hostname
+rebuild.sh new-hostname
 ```
 
 ## Available Modules
 
 ### Python Development
 
-Enable with: `./scripts/rebuild.sh home "" python enable`
+Enable with: `rebuild.sh home "" python enable`
 
 Includes:
 
@@ -298,7 +232,7 @@ Includes:
 
 ### Rust Development
 
-Enable with: `./scripts/rebuild.sh home "" rust enable`
+Enable with: `rebuild.sh home "" rust enable`
 
 Includes:
 
@@ -309,7 +243,7 @@ Includes:
 
 ### Go Development
 
-Enable with: `./scripts/rebuild.sh home "" go enable`
+Enable with: `rebuild.sh home "" go enable`
 
 Includes:
 
@@ -319,7 +253,7 @@ Includes:
 
 ### JavaScript/Node.js Development
 
-Enable with: `./scripts/rebuild.sh home "" javascript enable`
+Enable with: `rebuild.sh home "" javascript enable`
 
 Includes:
 
@@ -330,7 +264,7 @@ Includes:
 
 ### Clojure Development
 
-Enable with: `./scripts/rebuild.sh home "" clojure enable`
+Enable with: `rebuild.sh home "" clojure enable`
 
 Includes:
 
@@ -340,7 +274,7 @@ Includes:
 
 ### Haskell Development
 
-Enable with: `./scripts/rebuild.sh home "" haskell enable`
+Enable with: `rebuild.sh home "" haskell enable`
 
 Includes:
 
@@ -365,7 +299,7 @@ modules.haskell = {
 
 ### Creative Coding
 
-Enable with: `./scripts/rebuild.sh home "" creative enable`
+Enable with: `rebuild.sh home "" creative enable`
 
 A comprehensive environment for music programming and creative coding.
 

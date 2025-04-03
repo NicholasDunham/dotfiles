@@ -1,0 +1,6 @@
+# Ignore everything except bin, doom, and nix directories
+README.md
+\.git
+\.gitignore
+\.stowrc
+\.stow-local-ignore 

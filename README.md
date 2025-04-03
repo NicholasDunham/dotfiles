@@ -51,30 +51,28 @@ This dotfiles repository uses a combination of Nix, GNU Stow, and Doom Emacs to 
    source ~/.zshrc
    ```
 
-3. **Install GNU Stow**:
-
-   Temporarily install GNU Stow using Homebrew (it will be managed by Nix later):
+3. **Create necessary directories**:
 
    ```bash
-   brew install stow
+   mkdir -p ~/.config ~/bin
    ```
 
-4. **Create necessary directories**:
+4. **Stow configurations using Nix**:
 
-   ```bash
-   mkdir -p ~/.config
-   ```
-
-5. **Use Stow to place Nix configuration**:
+   Use Nix to temporarily provide GNU Stow and stow your configurations:
 
    ```bash
    cd ~/dotfiles
-   stow -t ~ nix
+   nix shell nixpkgs#stow --command stow
    ```
 
-   This will place the Nix configuration in `~/.config/nix`.
+   This will automatically stow the `bin`, `doom`, and `nix` directories to your home directory, placing:
 
-6. **Build your system using Nix**:
+   - Nix configuration in `~/.config/nix`
+   - Doom Emacs configuration in `~/.config/doom`
+   - Scripts in `~/bin`
+
+5. **Build your system using Nix**:
 
    ```bash
    # For personal MacBook
@@ -86,29 +84,21 @@ This dotfiles repository uses a combination of Nix, GNU Stow, and Doom Emacs to 
 
    The first build may take some time as it downloads and builds all packages.
 
-7. **Stow other configurations**:
+   After this step, open a new terminal session for the changes to take effect. From this point on, `~/bin` will be in your PATH.
 
-   After Nix has installed all required packages:
-
-   ```bash
-   cd ~/dotfiles
-   stow -t ~ bin
-   stow -t ~ doom
-   ```
-
-8. **Initialize Doom Emacs**:
+6. **Initialize Doom Emacs**:
 
    After Nix has installed Emacs:
 
    ```bash
    # Clone Doom Emacs if it doesn't exist yet
-   [ ! -d ~/.emacs.d ] && git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+   [ ! -d ~/.config/emacs ] && git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
    # Install Doom Emacs
-   ~/.emacs.d/bin/doom install
+   ~/.config/emacs/bin/doom install
 
    # Sync your configuration
-   ~/.emacs.d/bin/doom sync
+   ~/.config/emacs/bin/doom sync
    ```
 
 ## Usage
@@ -118,9 +108,9 @@ This dotfiles repository uses a combination of Nix, GNU Stow, and Doom Emacs to 
 After making changes to your Nix configuration, rebuild your system:
 
 ```bash
-~/bin/rebuild.sh home
+rebuild.sh home
 # OR
-~/bin/rebuild.sh work
+rebuild.sh work
 ```
 
 ### Managing Development Environments
@@ -129,10 +119,10 @@ Enable or disable specific development environments:
 
 ```bash
 # Enable Python environment
-~/bin/rebuild.sh home "" python enable
+rebuild.sh home "" python enable
 
 # Disable Rust environment
-~/bin/rebuild.sh home "" rust disable
+rebuild.sh home "" rust disable
 ```
 
 Available modules include: python, rust, go, javascript, clojure, haskell, and creative.
@@ -143,7 +133,7 @@ Update your system with the latest packages:
 
 ```bash
 # Update and rebuild
-~/bin/rebuild.sh home update
+rebuild.sh home update
 ```
 
 ### Updating Dotfiles
@@ -158,17 +148,17 @@ When you make changes to your dotfiles:
    git pull
    ```
 
-3. Re-run stow for any affected components:
+3. Re-stow your configurations:
 
    ```bash
-   stow -R -t ~ bin
-   stow -R -t ~ doom
+   cd ~/dotfiles
+   stow
    ```
 
 4. Rebuild your system if necessary:
 
    ```bash
-   ~/bin/rebuild.sh
+   rebuild.sh home
    ```
 
 ## Customization
@@ -179,7 +169,7 @@ See the detailed documentation in `nix/README.md` for more information on custom
 
 - **Homebrew permissions**: Ensure the user specified in Nix configuration has appropriate permissions.
 - **Failed builds**: Check Nix syntax errors in your configuration files.
-- **Stow conflicts**: If stow reports conflicts, use `stow -n -v -t ~ <package>` to simulate stowing and identify conflicts.
+- **Stow conflicts**: If stow reports conflicts, use `nix shell nixpkgs#stow --command stow -n -v` to simulate stowing and identify conflicts.
 
 ## License
 
