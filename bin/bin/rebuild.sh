@@ -4,7 +4,7 @@ set -e
 # Get the profile to build (home, span, or hostname)
 PROFILE=${1:-$(hostname)}
 
-# Should we pull updates? (true/false)
+# Check for the update flag (supports both "update" and legacy "true")
 PULL=${2:-false}
 
 # Enable or disable specific modules
@@ -145,7 +145,8 @@ if [ -n "$MODULE" ] && [ -n "$MODULE_ACTION" ]; then
   fi
 fi
 
-if [ "$PULL" = "true" ]; then
+# Check for update flag (accept both "update" and legacy "true")
+if [ "$PULL" = "update" ] || [ "$PULL" = "true" ]; then
   echo "⬇️  Pulling latest changes..."
   nix flake update
 fi
