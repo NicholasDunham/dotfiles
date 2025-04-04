@@ -4,15 +4,7 @@
   # Work-specific Home Manager configuration
   
   # Work-specific Git configuration
-  programs.git = {
-    # Use work email for Git at work
-    userEmail = "nicholas.dunham@work.com"; # Replace with your actual work email
-    
-    extraConfig = {
-      # Work-specific signing key for commits if needed
-      # user.signingKey = "your-gpg-key-id";
-      # commit.gpgSign = true;
-    };
+  programs.git.extraConfig = {
   };
   
   # Work-specific terminal customizations
