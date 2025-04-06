@@ -41,6 +41,7 @@
       "vlc"
       "notion"
       "plex"
+      "handbrake"
     ];
 
     # Home-specific brews (if any)
@@ -68,4 +69,4 @@
       KeyRepeat = 2;
     };
   };
-} 
+}
