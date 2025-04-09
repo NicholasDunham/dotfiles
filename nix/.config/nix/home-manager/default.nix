@@ -36,16 +36,16 @@
   };
 
   # Configure git
-  programs.git = {
-    enable = false;
-    userName = "Nicholas Dunham";
-    userEmail = "nicholasdunham@example.com"; # Replace with your email
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = false;
-      push.autoSetupRemote = true;
-    };
-  };
+  # programs.git = {
+  #   enable = false;
+  #   userName = "Nicholas Dunham";
+  #   userEmail = "nicholasdunham@example.com"; # Replace with your email
+  #   extraConfig = {
+  #     init.defaultBranch = "main";
+  #     pull.rebase = false;
+  #     push.autoSetupRemote = true;
+  #   };
+  # };
 
   # FZF configuration
   programs.fzf = {
@@ -171,4 +171,4 @@
 
   # This value determines the Home Manager release that your configuration is compatible with
   home.stateVersion = "23.11";
-} 
+}
