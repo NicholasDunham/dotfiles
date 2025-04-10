@@ -44,6 +44,22 @@
       doom-modeline-hud t)                       ; Show buffer progress bar
 
 ;; ------------------------------------------------------------
+;; Prism
+;; ------------------------------------------------------------
+;;
+;; Colorizes Lisp forms by depth
+
+(use-package! prism
+  :hook ((emacs-lisp-mode clojure-mode lisp-mode scheme-mode) . prism-mode)
+  :config
+  (prism-set-colors
+    :lightens '(0)
+    :desaturations '(0)
+    :colors (-map #'doom-color '(blue teal green yellow orange red magenta violet)))
+  (setq prism-parens t))
+
+
+;; ------------------------------------------------------------
 ;; Line Numbers
 ;; ------------------------------------------------------------
 ;;
