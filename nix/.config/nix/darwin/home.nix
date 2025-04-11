@@ -38,6 +38,7 @@
     # Home-specific casks
     casks = [
       "spotify"
+      "idagio"
       "vlc"
       "notion"
       "plex"
