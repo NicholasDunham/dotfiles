@@ -43,6 +43,7 @@
       "notion"
       "plex"
       "handbrake"
+      "whatsapp"
     ];
 
     # Home-specific brews (if any)
