@@ -95,6 +95,11 @@
       "cursor"
       "visual-studio-code"
 
+      # Other dev tools
+      "podman"
+      "podman-compose"
+      "podman-desktop"
+
       # Communication
       "slack"
       "zoom"
@@ -125,7 +130,6 @@
     git
     gnumake
     ripgrep
-    podman
 
     # Nix tools
     nil 
