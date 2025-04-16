@@ -156,7 +156,10 @@
     fontconfig
     gawk
     gnused
-    
+
+    # Containers
+    podman
+
     # Other utilities
     tree
     unzip
@@ -253,4 +256,4 @@ EOF
     home = "/Users/nicholasdunham";
     shell = pkgs.zsh;
   };
-} 
+}
