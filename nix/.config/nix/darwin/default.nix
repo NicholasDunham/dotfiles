@@ -125,6 +125,7 @@
     git
     gnumake
     ripgrep
+    podman
 
     # Nix tools
     nil 
@@ -156,9 +157,6 @@
     fontconfig
     gawk
     gnused
-
-    # Containers
-    podman
 
     # Other utilities
     tree
