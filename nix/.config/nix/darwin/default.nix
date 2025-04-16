@@ -96,8 +96,6 @@
       "visual-studio-code"
 
       # Other dev tools
-      "podman"
-      "podman-compose"
       "podman-desktop"
 
       # Communication
@@ -130,6 +128,8 @@
     git
     gnumake
     ripgrep
+    podman
+    podman-compose
 
     # Nix tools
     nil 
