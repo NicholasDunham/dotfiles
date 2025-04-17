@@ -121,15 +121,18 @@
   environment.systemPackages = with pkgs; [
     # Development tools
     bat
+    cmake
     difftastic
     fd
     fzf
+    gcc
     gh
     git
     gnumake
-    ripgrep
+    libtool
     podman
     podman-compose
+    ripgrep
 
     # Nix tools
     nil 
