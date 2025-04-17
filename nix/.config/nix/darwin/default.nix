@@ -128,6 +128,7 @@
     gcc
     gh
     git
+    glibtool
     gnumake
     libtool
     podman
