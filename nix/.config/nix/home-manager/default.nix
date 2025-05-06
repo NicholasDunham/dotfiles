@@ -22,7 +22,7 @@
   # Environment variables
   home.sessionVariables = {
     # JAVA_HOME is conditionally set to avoid circular dependencies with the system Clojure module
-    JAVA_HOME = lib.mkIf (pkgs ? jdk17) "${pkgs.jdk17}/lib/openjdk";
+    JAVA_HOME = lib.mkIf (pkgs ? graalvm-ce) "${pkgs.graalvm-ce}";
   };
 
   # Homebrew integration

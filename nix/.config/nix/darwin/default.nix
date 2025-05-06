@@ -30,7 +30,6 @@
       withLSP = true;
       withFormattingTools = true;
       withExtraTools = true;
-      # Using default JDK version (17)
     };
 
     # Enable JavaScript module with all options
