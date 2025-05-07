@@ -91,7 +91,6 @@
       "audacity"
 
       # IDEs
-      "cursor"
       "visual-studio-code"
 
       # Other dev tools
