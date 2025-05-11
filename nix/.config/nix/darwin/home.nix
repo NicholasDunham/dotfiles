@@ -4,21 +4,21 @@
   # Import home-specific modules
   imports = [
     # Add modules here that should be enabled for home machine only
-    ../modules/haskell.nix
+    # ../modules/haskell.nix
     ../modules/creative.nix
   ];
 
   # Configure modules
   modules = {
     # Enable home-specific modules
-    haskell = {
-      enable = true;
-      withLSP = true;
-      withLinter = true;
-      withFormatter = true;
-      withExtraTools = false;
-      ghcVersion = "default";
-    };
+    # haskell = {
+    #   enable = true;
+    #   withLSP = true;
+    #   withLinter = true;
+    #   withFormatter = true;
+    #   withExtraTools = false;
+    #   ghcVersion = "default";
+    # };
     
     creative = {
       enable = true;
