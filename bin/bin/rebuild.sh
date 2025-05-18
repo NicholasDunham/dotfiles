@@ -155,9 +155,9 @@ echo "🏗️  Building configuration..."
 nix build ".#darwinConfigurations.$HOST.system"
 
 echo "🚀 Activating configuration..."
-./result/sw/bin/darwin-rebuild switch --flake ".#$HOST"
+sudo ./result/sw/bin/darwin-rebuild switch --flake ".#$HOST"
 
 echo "🧹 Cleaning up..."
 rm -rf ./result
 
-echo "✅ Done! System rebuilt successfully." 
+echo "✅ Done! System rebuilt successfully."

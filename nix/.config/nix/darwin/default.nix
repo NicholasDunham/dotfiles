@@ -172,6 +172,8 @@
 
   # Basic darwin configuration
   system = {
+    primaryUser = "nicholasdunham"; # Added to address nix-darwin migration
+
     # System defaults
     defaults = {
       NSGlobalDomain = {

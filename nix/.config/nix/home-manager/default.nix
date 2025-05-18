@@ -77,7 +77,7 @@
     defaultKeymap = "emacs";
     
     # We'll install and manage these plugins manually to always get the latest versions
-    initExtra = ''
+    initContent = lib.mkOrder 550 ''
       # Additional key bindings
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
@@ -117,8 +117,14 @@
         fi
         echo "Done updating plugins."
       }
+
+      # P10K instant prompt setup
+      typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
     '';
-    
+
     # ZSH completions configuration
     completionInit = ''
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -127,14 +133,6 @@
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
     '';
     
-    initExtraBeforeCompInit = ''
-      # P10K instant prompt setup
-      typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
-
     shellAliases = {
       nix-clean = "nix-collect-garbage --delete-older-than 14d && nix-store --optimise";
     };

@@ -16,7 +16,7 @@
       apple = "cd ~/repos/apple";
     };
     
-    initExtra = ''
+    initContent = ''
       # Work-specific shell configuration
     '';
   };
