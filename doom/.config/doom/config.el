@@ -171,16 +171,19 @@
 ;; meantime it's handy to have them available in the menu.
 
 (map! :leader
-      (:prefix ("k". "Smartparens")
+      (:prefix ("k" . "Smartparens")
 
        ;; Basic motion
-       :desc "End of Sexp"      "$"  #'sp-end-of-sexp
-       :desc "Start of Sexp"    "^"  #'sp-beginning-of-sexp
-       :desc "Symbol Backward"  "h"  #'sp-backward-symbol
-       :desc "Sexp Backward"    "H"  #'sp-backward-sexp
-       :desc "Symbol Forward"   "l"  #'sp-forward-symbol
-       :desc "Sexp Forward"     "L"  #'sp-forward-sexp
-       :desc "Up Backward"      "U"  #'sp-backward-up-sexp
+       :desc "End of Sexp"        "$"  #'sp-end-of-sexp
+       :desc "Start of Sexp"      "^"  #'sp-beginning-of-sexp
+       :desc "Symbol Backward"    "h"  #'sp-backward-symbol
+       :desc "Sexp Backward"      "H"  #'sp-backward-sexp
+       :desc "Symbol Forward"     "l"  #'sp-forward-symbol
+       :desc "Sexp Forward"       "L"  #'sp-forward-sexp
+       :desc "Up Sexp"            "u"  #'sp-up-sexp
+       :desc "Down Sexp"          "d"  #'sp-down-sexp
+       :desc "Backward Up Sexp"   "U"  #'sp-backward-up-sexp
+       :desc "Backward Down Sexp" "D"  #'sp-backward-down-sexp
 
        ;; Basic structural editing
        :desc "Absorb"           "a"  #'sp-absorb-sexp
@@ -204,7 +207,7 @@
         :desc "Transpose" "t"  #'sp-transpose-hybrid-sexp)
 
        ;; Deletion
-       (:prefix ("d" . "Delete")
+       (:prefix ("k" . "Kill")
         :desc "Symbol"          "s"  #'sp-kill-symbol
         :desc "Symbol Backward" "S"  #'sp-backward-kill-symbol
         :desc "Word"            "w"  #'sp-kill-word
