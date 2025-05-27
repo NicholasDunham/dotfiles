@@ -123,6 +123,7 @@
     cmake
     difftastic
     fd
+    ffmpeg
     fzf
     gcc
     gh
