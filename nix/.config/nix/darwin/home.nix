@@ -40,7 +40,6 @@
       "spotify"
       "idagio"
       "vlc"
-      "notion"
       "plex"
       "handbrake"
       "whatsapp"

@@ -101,6 +101,11 @@
       "slack"
       "zoom"
 
+      # Productivity
+      "notion"
+      "notion-calendar"
+      "notion-mail"
+
       # System utilities
       "1password"
       "bartender"
