@@ -49,3 +49,4 @@
 ;; (unpin! t)
 
 (package! prism)
+(package! clojure-ts-mode)

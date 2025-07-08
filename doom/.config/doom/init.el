@@ -105,7 +105,7 @@
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
        lsp                 ; M-x vscode
-       (magit +forge)      ; a git porcelain for Emacs
+       (magit)      ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        ;;pdf               ; pdf enhancements
@@ -147,9 +147,9 @@
        ;;gdscript          ; the language you waited for
        ;(go +lsp)          ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
-       (haskell            ; a language that's lazier than I am
-        +lsp
-        +tree-sitter)
+       ;; (haskell            ; a language that's lazier than I am
+       ;;  +lsp
+       ;;  +tree-sitter)
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        (json               ; At least it ain't XML
@@ -180,10 +180,10 @@
        ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
-       (racket             ; a DSL for DSLs
-        +lsp
-        +xp
-        +hash-lang)
+       ;; (racket             ; a DSL for DSLs
+       ;;  +lsp
+       ;;  +xp
+       ;;  +hash-lang)
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;; rst              ; ReST in peace
