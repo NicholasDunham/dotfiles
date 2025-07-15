@@ -43,6 +43,7 @@
       "plex"
       "handbrake"
       "whatsapp"
+      "scummvm-app"
     ];
 
     # Home-specific brews (if any)
