@@ -12,6 +12,7 @@
   homebrew = {
     # Work-specific casks
     casks = [
+      "gpt4all"
     ];
 
     # Work-specific brews
@@ -41,4 +42,4 @@
       KeyRepeat = 4;
     };
   };
-} 
+}
