@@ -44,47 +44,6 @@
       doom-modeline-hud t)                       ; Show buffer progress bar
 
 ;; ------------------------------------------------------------
-;; Prism
-;; ------------------------------------------------------------
-;;
-;; Colorizes Lisp forms by depth
-
-;; Rainbow prism with content matching surrounding parentheses
-;; (use-package! prism
-;;   :hook ((emacs-lisp-mode clojure-mode lisp-mode scheme-mode) . prism-mode)
-;;   :config
-;;   ;; Enable parentheses with dimming
-;;   (setq prism-parens t)
-
-;;   ;; Double each color so depth N and N+1 get the same color
-;;   ;; This makes content match its surrounding parentheses
-;;   (prism-set-colors
-;;     :lightens '(0)
-;;     :desaturations '(0)
-;;     :colors (-map #'doom-color '(green blue magenta red orange yellow green))
-;;     ;; Dim parentheses while keeping the same color as content
-;;     :parens-fn (lambda (color)
-;;                  (prism-blend color (doom-color 'bg) 0.5))))
-
-;; (use-package! clojure-ts-mode
-;;   :mode (("\\.clj\\'" . clojure-ts-mode)
-;;          ("\\.cljs\\'" . clojure-ts-mode)
-;;          ("\\.cljc\\'" . clojure-ts-mode))
-;;   :hook (clojure-ts-mode . cider-mode))
-
-;; (use-package! lsp-mode
-;;   :hook (clojure-ts-mode . lsp)
-;;   :config
-;;   (setq lsp-semantic-tokens-enable t
-;;         lsp-enable-symbol-highlighting t))
-
-;; (use-package! cider
-;;   :hook (clojure-ts-mode . cider-mode)
-;;   :config
-;;   ;; Enable dynamic syntax highlighting
-;;   (setq cider-font-lock-dynamically t))
-
-;; ------------------------------------------------------------
 ;; Line Numbers
 ;; ------------------------------------------------------------
 ;;
@@ -98,6 +57,13 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;; (setq org-directory "~/org/")
+
+;; ------------------------------------------------------------
+;; Parentheses
+;; ------------------------------------------------------------
+
+(after! parinfer-rust
+  (set-face-attribute 'parinfer-rust-dim-parens nil))
 
 ;; ------------------------------------------------------------
 ;; Frame Size
