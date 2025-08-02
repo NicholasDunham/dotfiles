@@ -63,7 +63,8 @@
 ;; ------------------------------------------------------------
 
 (after! parinfer-rust
-  (set-face-attribute 'parinfer-rust-dim-parens nil))
+  (set-face-attribute 'parinfer-rust-dim-parens nil
+                      :foreground (doom-lighten (doom-color 'fg) 0.5)))
 
 ;; ------------------------------------------------------------
 ;; Frame Size
