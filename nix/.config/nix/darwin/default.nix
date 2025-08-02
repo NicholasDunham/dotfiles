@@ -72,6 +72,7 @@
     # Homebrew packages (formulae)
     brews = [
       "emacs-plus@30" # Emacs Plus version 30
+      "exercism"
     ];
 
     # Mac App Store apps
