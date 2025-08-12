@@ -103,7 +103,6 @@
       "zoom"
 
       # Productivity
-      "macwhisper"
       "notion"
       "notion-calendar"
       "notion-mail"
