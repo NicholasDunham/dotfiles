@@ -106,6 +106,7 @@
       "notion"
       "notion-calendar"
       "notion-mail"
+      "ticktick"
 
       # System utilities
       "1password"
