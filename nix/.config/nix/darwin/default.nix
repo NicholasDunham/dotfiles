@@ -215,9 +215,15 @@
         # First ensure the post-install is completed
         sudo -u ${username} /opt/homebrew/bin/brew postinstall d12frosted/emacs-plus/emacs-plus@30 || true
         
-        # Create Applications alias
-        echo "Creating alias in Applications for Emacs.app"
-        sudo -u ${username} osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@30/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}' || true
+        # Remove any existing Emacs.app in Applications to avoid conflicts
+        if [ -e "/Applications/Emacs.app" ]; then
+          echo "Removing existing Emacs.app from Applications"
+          rm -rf "/Applications/Emacs.app"
+        fi
+        
+        # Create a proper symlink instead of an alias
+        echo "Creating symlink in Applications for Emacs.app"
+        sudo -u ${username} ln -sf "/opt/homebrew/opt/emacs-plus@30/Emacs.app" "/Applications/Emacs.app"
         
         # Create bin directory if it doesn't exist
         mkdir -p "/Users/${username}/bin"

@@ -16,7 +16,7 @@
     
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Don't override inputs - let nix-homebrew use its own versions
     };
 
     # Homebrew taps
