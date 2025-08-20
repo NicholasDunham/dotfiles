@@ -38,12 +38,10 @@
     # Home-specific casks
     casks = [
       "spotify"
-      "idagio"
       "vlc"
       "plex"
       "handbrake"
       "whatsapp"
-      "scummvm-app"
     ];
 
     # Home-specific brews (if any)

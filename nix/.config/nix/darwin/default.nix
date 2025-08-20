@@ -92,7 +92,6 @@
       "audacity"
 
       # IDEs
-      "intellij-idea-ce"
       "visual-studio-code"
 
       # Other dev tools
