@@ -4,95 +4,76 @@ A repository for managing and synchronizing configuration files between my home 
 
 ## Overview
 
-This dotfiles repository uses a combination of Nix, GNU Stow, and Doom Emacs to create a consistent, reproducible environment across different machines. The setup includes:
+This dotfiles repository uses a combination of Homebrew and GNU Stow to create a consistent, reproducible environment across different machines. The setup includes:
 
-- Declarative system configuration with Nix/nix-darwin
-- Homebrew integration for macOS-specific applications
+- Homebrew for package management and applications
+- GNU Stow for dotfile symlink management
 - Doom Emacs configuration
-- Utility scripts
+- Zsh shell configuration with Powerlevel10k
 
 ## Repository Structure
 
-- **bin/**: Scripts that will be symlinked to `~/bin` and included in `$PATH`
-  - Contains utility scripts like `rebuild.sh` for Nix configuration
+- **Brewfile**: Defines all packages, applications, and VS Code extensions to install via Homebrew
 - **doom/**: Configuration files for Doom Emacs
   - Organized in the `.config/doom` structure for Stow compatibility
-- **nix/**: Nix flake configuration
-  - Contains darwin configurations for home and work environments
-  - Includes modular setup for different development environments
+- **zsh/**: Zsh shell configuration files
+  - `.zshenv`, `.zprofile`, `.zshrc` for comprehensive shell setup
+  - Includes Homebrew integration and Powerlevel10k prompt
 
-## Setup Instructions
+## System Setup Guide
 
 ### Prerequisites
 
 - macOS (Apple Silicon or Intel)
 - Administrator access
 
-### Installation Steps
+### Fresh System Installation
 
 1. **Clone this repository**:
 
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+   git clone https://github.com/NicholasDunham/dotfiles.git ~/dotfiles
    cd ~/dotfiles
    ```
 
-2. **Install Nix**:
-
-   Install using the Determinate Systems installer:
+2. **Install Homebrew**:
 
    ```bash
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-   Reload your shell after installation:
+   Add Homebrew to your PATH:
 
    ```bash
-   source ~/.zshrc
+   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+   eval "$(/opt/homebrew/bin/brew shellenv)"
    ```
 
-3. **Create necessary directories**:
-
-   ```bash
-   mkdir -p ~/.config ~/bin
-   ```
-
-4. **Stow configurations using Nix**:
-
-   Use Nix to temporarily provide GNU Stow and stow your configurations:
+3. **Install packages from Brewfile**:
 
    ```bash
    cd ~/dotfiles
-   nix shell nixpkgs#stow --command stow
+   brew bundle install
    ```
 
-   This will automatically stow the `bin`, `doom`, and `nix` directories to your home directory, placing:
+   This installs all formulae, casks, and VS Code extensions defined in the Brewfile.
 
-   - Nix configuration in `~/.config/nix`
+4. **Install dotfiles with Stow**:
+
+   ```bash
+   cd ~/dotfiles
+   stow doom zsh
+   ```
+
+   This creates symlinks for:
    - Doom Emacs configuration in `~/.config/doom`
-   - Scripts in `~/bin`
+   - Zsh configuration files in your home directory
 
-5. **Build your system using Nix**:
-
-   ```bash
-   # For personal MacBook
-   ~/bin/rebuild.sh home
-
-   # For work MacBook
-   ~/bin/rebuild.sh work
-   ```
-
-   The first build may take some time as it downloads and builds all packages.
-
-   After this step, open a new terminal session for the changes to take effect. From this point on, `~/bin` will be in your PATH.
-
-6. **Initialize Doom Emacs**:
-
-   After Nix has installed Emacs:
+5. **Initialize Doom Emacs**:
 
    ```bash
-   # Clone Doom Emacs if it doesn't exist yet
-   [ ! -d ~/.config/emacs ] && git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+   # Clone Doom Emacs
+   git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
    # Install Doom Emacs
    ~/.config/emacs/bin/doom install
@@ -101,75 +82,177 @@ This dotfiles repository uses a combination of Nix, GNU Stow, and Doom Emacs to 
    ~/.config/emacs/bin/doom sync
    ```
 
-## Usage
+6. **Configure Powerlevel10k** (optional):
 
-### Rebuilding Your System
+   ```bash
+   # Run the configuration wizard
+   p10k configure
+   ```
 
-After making changes to your Nix configuration, rebuild your system:
+7. **Reload your shell**:
 
-```bash
-rebuild.sh home
-# OR
-rebuild.sh work
-```
+   ```bash
+   exec zsh -l
+   ```
 
-### Managing Development Environments
+## Using Stow with Dotfiles
 
-Enable or disable specific development environments:
+### Adding New Dotfile Packages
 
-```bash
-# Enable Python environment
-rebuild.sh home "" python enable
+To add a new application's configuration:
 
-# Disable Rust environment
-rebuild.sh home "" rust disable
-```
-
-Available modules include: python, rust, go, javascript, clojure, haskell, and creative.
-
-### Updating Packages
-
-Update your system with the latest packages:
-
-```bash
-# Update and rebuild
-rebuild.sh home update
-```
-
-### Updating Dotfiles
-
-When you make changes to your dotfiles:
-
-1. Commit and push changes to your repository
-2. On other machines, pull the latest changes:
+1. **Create a package directory**:
 
    ```bash
    cd ~/dotfiles
-   git pull
+   mkdir myapp
    ```
 
-3. Re-stow your configurations:
+2. **Organize files in the target structure**:
 
    ```bash
-   cd ~/dotfiles
-   stow
+   # For files that go in home directory
+   mkdir -p myapp
+   # Add your config files, e.g.:
+   echo "alias myapp='myapp --flag'" > myapp/.myapprc
+   
+   # For files that go in ~/.config
+   mkdir -p myapp/.config/myapp
+   echo "setting=value" > myapp/.config/myapp/config.yml
    ```
 
-4. Rebuild your system if necessary:
+3. **Stow the package**:
 
    ```bash
-   rebuild.sh home
+   stow myapp
    ```
 
-## Customization
+### Managing Existing Packages
 
-See the detailed documentation in `nix/README.md` for more information on customizing your Nix configuration.
+- **Stow a package**: `stow package-name`
+- **Unstow a package**: `stow -D package-name`
+- **Restow a package** (useful after updates): `stow -R package-name`
+- **Simulate stowing** (dry run): `stow -n -v package-name`
+- **Stow all packages**: `stow *` (or just `stow` with no arguments)
+
+### Stow Best Practices
+
+- Always run stow commands from your dotfiles directory
+- Use `-n -v` flags to preview changes before applying
+- Organize files exactly as they should appear in your home directory
+- Use meaningful package names that match the application
+- Keep related configurations in the same package
+
+## Homebrew Maintenance
+
+### Keeping Software Updated
+
+```bash
+# Update Homebrew itself and all packages
+brew update && brew upgrade
+
+# Update only specific packages
+brew upgrade package-name
+
+# Update from Brewfile (installs missing, doesn't remove extra)
+cd ~/dotfiles
+brew bundle install
+```
+
+### Cleaning Up Unused Software
+
+To remove software that's installed but not in your Brewfile:
+
+```bash
+# Generate a new Brewfile with everything currently installed
+cd ~/dotfiles
+brew bundle dump --force --describe
+
+# Compare with your existing Brewfile to see what's extra
+git diff Brewfile
+
+# Remove software not in Brewfile (use with caution)
+brew bundle cleanup --force
+
+# Or remove specific packages manually
+brew uninstall package-name
+brew uninstall --cask app-name
+```
+
+### Brewfile Maintenance
+
+```bash
+# Add currently installed packages to Brewfile
+brew bundle dump --force --describe
+
+# Install missing packages from Brewfile
+brew bundle install
+
+# Check what would be installed/removed
+brew bundle check --verbose
+
+# Clean up old cached downloads
+brew cleanup
+```
+
+### Managing Dependencies
+
+```bash
+# See what depends on a package
+brew uses package-name --installed
+
+# See dependencies of a package
+brew deps package-name
+
+# Remove orphaned dependencies
+brew autoremove
+```
+
+## Configuration Details
+
+### Zsh Configuration
+
+The Zsh setup includes:
+
+- **Environment variables** (.zshenv): HOMEBREW_PREFIX and other essentials
+- **Login shell setup** (.zprofile): PATH configuration, Homebrew initialization
+- **Interactive shell** (.zshrc): Prompt, completions, aliases, plugins
+
+Key features:
+
+- Homebrew integration for both login and non-login shells
+- Powerlevel10k prompt with Git integration
+- FZF integration for fuzzy finding
+- GNU coreutils prioritized in PATH
+- Optional zsh-autosuggestions and zsh-syntax-highlighting
+
+### Doom Emacs Configuration
+
+Located in `doom/.config/doom/`, includes:
+
+- Custom key bindings and workflow optimizations
+- Language-specific configurations
+- Package customizations
 
 ## Troubleshooting
 
-- **Homebrew permissions**: Ensure the user specified in Nix configuration has appropriate permissions.
-- **Failed builds**: Check Nix syntax errors in your configuration files.
-- **Stow conflicts**: If stow reports conflicts, use `nix shell nixpkgs#stow --command stow -n -v` to simulate stowing and identify conflicts.
+### Stow Issues
+
+- **"Target exists and is not a symlink"**: Remove or backup the existing file
+- **Permission denied**: Ensure you have write access to the target directory
+- **Broken symlinks**: Unstow and restow the package
+
+### Homebrew Issues
+
+- **Permission errors**: Fix Homebrew ownership with `sudo chown -R $(whoami) $(brew --prefix)`
+- **Path issues**: Ensure Homebrew is in your PATH via shell configuration
+- **Tap failures**: Create missing directories and fix ownership
+
+### Zsh Issues
+
+- **Prompt not loading**: Ensure Powerlevel10k is installed and HOMEBREW_PREFIX is set
+- **Commands not found**: Check PATH configuration in .zprofile
+- **Slow startup**: Review .zshrc for expensive operations
 
 ## License
 
