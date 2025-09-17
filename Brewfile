@@ -91,8 +91,6 @@ cask "1password"
 cask "anki"
 # Multi-track audio editor and recorder
 cask "audacity"
-# Menu bar icon organiser
-cask "bartender"
 # Create and run Linux containers using lightweight virtual machines
 cask "container"
 # Flexible space to create your own interactive software
@@ -109,6 +107,8 @@ cask "google-chrome"
 cask "gpt4all"
 # Open-source video transcoder
 cask "handbrake-app"
+# Utility to hide menu bar items
+cask "hiddenbar"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
