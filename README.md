@@ -149,7 +149,7 @@ To add a new application's configuration:
 
 ```bash
 # Update Homebrew itself and all packages
-brew update && brew upgrade
+brew update && brew upgrade --greedy
 
 # Update only specific packages
 brew upgrade package-name
