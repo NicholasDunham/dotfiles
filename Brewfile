@@ -95,6 +95,8 @@ cask "audacity"
 cask "container"
 # Flexible space to create your own interactive software
 cask "cycling74-max"
+# Voice and text chat software
+cask "discord"
 # Web browser
 cask "firefox"
 cask "font-fira-code-nerd-font"
