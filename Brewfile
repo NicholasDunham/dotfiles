@@ -91,6 +91,8 @@ cask "1password"
 cask "anki"
 # Multi-track audio editor and recorder
 cask "audacity"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Create and run Linux containers using lightweight virtual machines
 cask "container"
 # Flexible space to create your own interactive software
