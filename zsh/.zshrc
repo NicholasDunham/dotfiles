@@ -1,8 +1,11 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# Disable Powerlevel10k instant prompt in VS Code to fix terminal integration
+if [[ "$TERM_PROGRAM" != "vscode" ]]; then
+  # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+  # Initialization code that may require console input (password prompts, [y/n]
+  # confirmations, etc.) must go above this block; everything else may go below.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
 fi
 
 # Ensure HOMEBREW_PREFIX exists in non-login shells
@@ -44,12 +47,24 @@ if [ -r "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]; then
 fi
 
 # Optional: plugins (install: brew install zsh-autosuggestions zsh-syntax-highlighting)
-if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-	source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Load plugins more efficiently in VS Code
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    # Minimal plugin loading for VS Code terminal integration
+    if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+        source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    fi
+else
+    # Full plugin loading for other terminals
+    if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+        source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    fi
 fi
 
 # Powerlevel10k prompt (Homebrew)
-if [ -r "$HOMEBREW_PREFIX/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    # Simplified prompt for VS Code terminal integration
+    PROMPT='%F{cyan}%n@%m%f %F{yellow}%~%f %# '
+elif [ -r "$HOMEBREW_PREFIX/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
 	source "$HOMEBREW_PREFIX/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme"
 	# If you've configured p10k, load your settings
 	if [ -r "$HOME/.p10k.zsh" ]; then
@@ -72,7 +87,8 @@ if command -v podman >/dev/null 2>&1; then
 fi
 
 # Keep zsh-syntax-highlighting last for performance/correctness
-if [ -r "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+# Skip in VS Code initially to avoid terminal integration issues
+if [[ "$TERM_PROGRAM" != "vscode" ]] && [ -r "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
 	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
