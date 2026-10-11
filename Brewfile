@@ -110,7 +110,6 @@ cask "audacity"
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
-cask "container"
 # Web browser
 cask "firefox"
 cask "font-fira-code-nerd-font"
