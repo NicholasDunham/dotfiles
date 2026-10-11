@@ -13,6 +13,8 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
 ## Repository Structure
 
 - **Brewfile**: Defines all packages, applications, and VS Code extensions to install via Homebrew
+- **bin/**: Personal scripts, linked into `~/bin` (which `.zprofile` adds to PATH)
+  - `brewup`: Weekly Homebrew update, upgrade, and cleanup
 - **zsh/**: Zsh shell configuration files
   - `.zshenv`, `.zprofile`, `.zshrc` for comprehensive shell setup
   - Includes Homebrew integration and Powerlevel10k prompt
@@ -59,10 +61,11 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
 
    ```bash
    cd ~/dotfiles
-   stow zsh
+   mkdir -p ~/bin
+   stow bin zsh
    ```
 
-   This creates symlinks for the Zsh configuration files in your home directory.
+   This creates symlinks for the scripts in `~/bin` and the Zsh configuration files in your home directory. Creating `~/bin` first keeps it a real directory, so Stow links the individual scripts instead of replacing `~/bin` with a symlink into this repository.
 
 5. **Configure Powerlevel10k** (optional):
 
@@ -130,8 +133,9 @@ To add a new application's configuration:
 ### Keeping Software Updated
 
 ```bash
-# Update Homebrew itself and all packages
-brew update && brew upgrade --greedy
+# Update Homebrew and all packages, clear quarantine from Homebrew apps,
+# clean up, and run brew doctor (see bin/bin/brewup)
+brewup
 
 # Update only specific packages
 brew upgrade package-name

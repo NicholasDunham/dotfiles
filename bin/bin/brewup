@@ -1,0 +1,67 @@
+#!/usr/bin/env zsh
+# brewup: update and upgrade everything Homebrew manages, then tidy up.
+#
+# Every step runs even if an earlier one fails (e.g. one cask failing to
+# upgrade shouldn't skip cleanup or `brew doctor`). Failed steps are listed
+# at the end, and the script exits non-zero if there were any.
+
+emulate -L zsh
+setopt pipe_fail
+
+typeset -a failed_steps
+
+# Run a step, printing a header and recording it if it fails.
+step() {
+	local name=$1
+	shift
+	print -P "\n%F{blue}==>%f %B${name}%b"
+	if ! "$@"; then
+		failed_steps+=("$name")
+	fi
+}
+
+# Homebrew quarantines every cask it installs, and no longer offers a way to
+# opt out (`--no-quarantine` was removed in Homebrew 6.0.14). Clear quarantine
+# from apps that casks put in /Applications, and nothing else, so apps from
+# other sources keep their Gatekeeper check.
+#
+# Casks installed from a .pkg (e.g. zoom) have no `app` artifact and are
+# skipped; the macOS installer doesn't quarantine the files it installs.
+unquarantine_cask_apps() {
+	local json
+	json=$(brew info --json=v2 --installed --cask) || return 1
+
+	local list
+	list=$(jq -r '.casks[].artifacts[] | select(has("app")) | .target' <<<"$json") || return 1
+	local -a apps=("${(@f)list}")
+
+	local app rc=0 count=0
+	for app in "${apps[@]}"; do
+		[[ -n $app ]] || continue
+		if [[ ! -e $app ]]; then
+			print -u2 "Warning: $app not found; skipping"
+			continue
+		fi
+		if xattr -dr com.apple.quarantine "$app"; then
+			(( count++ ))
+		else
+			rc=1
+		fi
+	done
+	print "Cleared quarantine from $count Homebrew app(s)."
+	return $rc
+}
+
+step "Updating Homebrew" brew update
+step "Upgrading packages" brew upgrade --greedy
+step "Clearing quarantine from Homebrew apps" unquarantine_cask_apps
+step "Cleaning up" brew cleanup
+step "Checking for problems" brew doctor
+
+print
+if (( ${#failed_steps} )); then
+	print -P "%F{red}Failed steps:%f"
+	printf '  - %s\n' "${failed_steps[@]}"
+	exit 1
+fi
+print -P "%F{green}All steps completed successfully.%f"
