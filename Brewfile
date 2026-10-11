@@ -1,9 +1,7 @@
+tap "hashicorp/tap", trusted: true
+tap "spandigital/tap", "https://github.com/SPANDigital/homebrew-tap"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Platform built on V8 to build network applications
-brew "node"
-# Language Server for Bash
-brew "bash-language-server"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -12,23 +10,19 @@ brew "btop"
 brew "fontconfig"
 # Cross-platform make
 brew "cmake"
+# Create and run Linux containers using lightweight virtual machines
+brew "container"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
-# GNU compiler collection
-brew "gcc"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# Sound and music computing system
-brew "csound"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# DjVu viewer
+brew "djvulibre"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
@@ -36,6 +30,8 @@ brew "findutils"
 brew "fzf"
 # GNU awk utility
 brew "gawk"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -46,20 +42,30 @@ brew "go"
 brew "htop"
 # Configurable static site generator
 brew "hugo"
-# JIT library for the GNU compiler collection
-brew "libgccjit"
 # Generic library support script
 brew "libtool"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
 # C99 library which implements a VT220 or xterm terminal emulator
 brew "libvterm"
 # Move, copy, append, and link multiple files
 brew "mmv"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Theme for zsh
 brew "powerlevel10k"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -80,12 +86,20 @@ brew "unzip"
 brew "uv"
 # Internet file retriever
 brew "wget"
+# Port of OpenAI's Whisper model in C/C++
+brew "whisper.cpp"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Terraform
+brew "hashicorp/tap/terraform"
+# Presidium is a software documentation management system for agile teams
+brew "spandigital/tap/presidium", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Memory training application
@@ -94,12 +108,9 @@ cask "anki"
 cask "audacity"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Create and run Linux containers using lightweight virtual machines
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
 cask "container"
-# Flexible space to create your own interactive software
-cask "cycling74-max"
-# Voice and text chat software
-cask "discord"
 # Web browser
 cask "firefox"
 cask "font-fira-code-nerd-font"
@@ -108,22 +119,16 @@ cask "font-fira-sans"
 cask "gimp"
 # Web browser
 cask "google-chrome"
-# Run LLMs locally
-cask "gpt4all"
 # Open-source video transcoder
 cask "handbrake-app"
-# Utility to hide menu bar items
-cask "hiddenbar"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
 cask "mac-mouse-fix"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Calendar for professionals and teams
-cask "notion-calendar"
-# Email client integrated with Notion workspace
-cask "notion-mail"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Home media player
 cask "plex"
 # Control your tools with a few keystrokes
@@ -132,10 +137,10 @@ cask "raycast"
 cask "slack"
 # Music streaming service
 cask "spotify"
-# Server, language, and IDE for sound synthesis and algorithmic composition
-cask "supercollider"
-# To-do & task list manager
-cask "ticktick"
+# Desktop client for Telegram messenger
+cask "telegram-desktop"
+# Unpacks archive files
+cask "the-unarchiver"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -148,20 +153,16 @@ vscode "766b.go-outliner"
 vscode "alefragnani.project-manager"
 vscode "anthropic.claude-code"
 vscode "arcticicestudio.nord-visual-studio-code"
-vscode "betterthantomorrow.calva"
-vscode "betterthantomorrow.calva-spritz"
-vscode "bradlc.vscode-tailwindcss"
+vscode "awei-sumaho.apple-container-manager"
 vscode "csstools.postcss"
 vscode "davidanson.vscode-markdownlint"
 vscode "dendron.adjust-heading-level"
-vscode "docker.docker"
 vscode "draivin.hscopes"
 vscode "eamodio.gitlens"
 vscode "esbenp.prettier-vscode"
 vscode "fabiospampinato.vscode-open-in-github"
 vscode "formulahendry.auto-rename-tag"
 vscode "github.codespaces"
-vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "golang.go"
 vscode "jinliming2.vscode-go-template"
@@ -175,14 +176,18 @@ vscode "ms-python.vscode-pylance"
 vscode "ms-python.vscode-python-envs"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
-vscode "orangex4.regexr-vscode"
 vscode "pulkitgangwar.nextjs-snippets"
-vscode "scvsc.scvsc"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "takumii.markdowntable"
 vscode "unifiedjs.vscode-mdx"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
 vscode "vscodevim.vim"
-vscode "yatki.vscode-surround"
+vscode "wengerk.highlight-bad-chars"
 vscode "yzhang.markdown-all-in-one"
+go "github.com/go-delve/delve/cmd/dlv"
+go "github.com/766b/go-outliner"
+go "github.com/fatih/gomodifytags"
+go "github.com/haya14busa/goplay/cmd/goplay"
+go "golang.org/x/tools/gopls"
+go "github.com/cweill/gotests/gotests"
+go "github.com/josharian/impl"
+go "honnef.co/go/tools/cmd/staticcheck"

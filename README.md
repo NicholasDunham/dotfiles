@@ -152,7 +152,7 @@ To remove software that's installed but not in your Brewfile:
 ```bash
 # Generate a new Brewfile with everything currently installed
 cd ~/dotfiles
-brew bundle dump --force --describe
+brew bundle dump --force
 
 # Compare with your existing Brewfile to see what's extra
 git diff Brewfile
@@ -169,7 +169,7 @@ brew uninstall --cask app-name
 
 ```bash
 # Add currently installed packages to Brewfile
-brew bundle dump --force --describe
+brew bundle dump --force
 
 # Install missing packages from Brewfile
 brew bundle install
