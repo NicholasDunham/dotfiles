@@ -1,3 +1,4 @@
+tap "fif7y/tap"
 tap "hashicorp/tap", trusted: true
 tap "spandigital/tap", "https://github.com/SPANDigital/homebrew-tap"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -128,6 +129,8 @@ cask "mac-mouse-fix"
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Calm menu bar. Hide, reveal and reorder menu bar items on macOS 27
+cask "fif7y/tap/pelmet", trusted: true
 # Home media player
 cask "plex"
 # Control your tools with a few keystrokes
