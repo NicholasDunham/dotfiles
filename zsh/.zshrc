@@ -56,9 +56,11 @@ if [[ "$TERM_PROGRAM" == "vscode" ]]; then
     PROMPT='%F{cyan}%n@%m%f %F{yellow}%~%f %# '
 elif [ -r "$HOMEBREW_PREFIX/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
 	source "$HOMEBREW_PREFIX/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme"
-	# If you've configured p10k, load your settings
+	# If you've configured p10k, load your settings. Keep the `source ~/.p10k.zsh`
+	# form: `p10k configure` only recognizes certain spellings, and appends a
+	# duplicate source line to .zshrc if it doesn't find one.
 	if [ -r "$HOME/.p10k.zsh" ]; then
-		source "$HOME/.p10k.zsh"
+		source ~/.p10k.zsh
 	fi
 else
 	# Fallback lightweight prompt with Git branch

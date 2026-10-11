@@ -17,6 +17,7 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
   - `brewup`: Weekly Homebrew update, upgrade, and cleanup
 - **zsh/**: Zsh shell configuration files
   - `.zshenv`, `.zprofile`, `.zshrc` for comprehensive shell setup
+  - `.p10k.zsh` for the Powerlevel10k prompt configuration
   - Includes Homebrew integration and Powerlevel10k prompt
 
 ## System Setup Guide
@@ -67,7 +68,7 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
 
    This creates symlinks for the scripts in `~/bin` and the Zsh configuration files in your home directory. Creating `~/bin` first keeps it a real directory, so Stow links the individual scripts instead of replacing `~/bin` with a symlink into this repository.
 
-5. **Configure Powerlevel10k** (optional):
+5. **Configure Powerlevel10k** (optional): the prompt configuration is included in `zsh/.p10k.zsh`, so this is only needed to change it. The wizard writes through the symlink, so changes land in this repository.
 
    ```bash
    # Run the configuration wizard
