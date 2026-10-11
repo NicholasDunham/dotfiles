@@ -1,4 +1,3 @@
-tap "d12frosted/emacs-plus"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Platform built on V8 to build network applications
@@ -83,8 +82,6 @@ brew "uv"
 brew "wget"
 # UNIX shell (command interpreter)
 brew "zsh"
-# GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@31"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Memory training application
@@ -147,7 +144,6 @@ vscode "766b.go-outliner"
 vscode "alefragnani.project-manager"
 vscode "anthropic.claude-code"
 vscode "arcticicestudio.nord-visual-studio-code"
-vscode "bbenoist.nix"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
 vscode "bradlc.vscode-tailwindcss"

@@ -11,11 +11,6 @@
 *.swo
 *.bak
 
-# Emacs Projectile and Magit
-.projectile-cache.eld
-projectile-bookmarks.eld
-/.git/MAGIT/
-
 # VS Code and Cursor
 .vscode/
 

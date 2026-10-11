@@ -8,14 +8,11 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
 
 - Homebrew for package management and applications
 - GNU Stow for dotfile symlink management
-- Doom Emacs configuration
 - Zsh shell configuration with Powerlevel10k
 
 ## Repository Structure
 
 - **Brewfile**: Defines all packages, applications, and VS Code extensions to install via Homebrew
-- **doom/**: Configuration files for Doom Emacs
-  - Organized in the `.config/doom` structure for Stow compatibility
 - **zsh/**: Zsh shell configuration files
   - `.zshenv`, `.zprofile`, `.zshrc` for comprehensive shell setup
   - Includes Homebrew integration and Powerlevel10k prompt
@@ -62,34 +59,19 @@ This dotfiles repository uses a combination of Homebrew and GNU Stow to create a
 
    ```bash
    cd ~/dotfiles
-   stow doom zsh
+   stow zsh
    ```
 
-   This creates symlinks for:
-   - Doom Emacs configuration in `~/.config/doom`
-   - Zsh configuration files in your home directory
+   This creates symlinks for the Zsh configuration files in your home directory.
 
-5. **Initialize Doom Emacs**:
-
-   ```bash
-   # Clone Doom Emacs
-   git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-
-   # Install Doom Emacs
-   ~/.config/emacs/bin/doom install
-
-   # Sync your configuration
-   ~/.config/emacs/bin/doom sync
-   ```
-
-6. **Configure Powerlevel10k** (optional):
+5. **Configure Powerlevel10k** (optional):
 
    ```bash
    # Run the configuration wizard
    p10k configure
    ```
 
-7. **Reload your shell**:
+6. **Reload your shell**:
 
    ```bash
    exec zsh -l
@@ -225,14 +207,6 @@ Key features:
 - FZF integration for fuzzy finding
 - GNU coreutils prioritized in PATH
 - Optional zsh-autosuggestions and zsh-syntax-highlighting
-
-### Doom Emacs Configuration
-
-Located in `doom/.config/doom/`, includes:
-
-- Custom key bindings and workflow optimizations
-- Language-specific configurations
-- Package customizations
 
 ## Troubleshooting
 
