@@ -206,7 +206,7 @@ Key features:
 - Powerlevel10k prompt with Git integration
 - FZF integration for fuzzy finding
 - GNU coreutils prioritized in PATH
-- Optional zsh-autosuggestions and zsh-syntax-highlighting
+- zsh-autosuggestions and zsh-syntax-highlighting (installed via the Brewfile)
 
 ## Troubleshooting
 

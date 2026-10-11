@@ -8,8 +8,7 @@ if [[ "$TERM_PROGRAM" != "vscode" ]]; then
   fi
 fi
 
-# Ensure HOMEBREW_PREFIX exists in non-login shells
-: "${HOMEBREW_PREFIX:=$(command -v brew >/dev/null 2>&1 && brew --prefix || echo /opt/homebrew)}"
+# HOMEBREW_PREFIX is set in .zshenv
 # Initialize Homebrew environment if this is a non-login shell and brew isn't on PATH
 if ! command -v brew >/dev/null 2>&1; then
 	if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
@@ -20,13 +19,13 @@ fi
 # Shell options and history
 setopt prompt_subst
 setopt auto_cd auto_pushd
-setopt hist_ignore_dups hist_ignore_all_dups share_history inc_append_history extended_history
+setopt hist_ignore_all_dups share_history extended_history
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
 # Editor
-export EDITOR="emacsclient -c -a ''"
+export EDITOR="nvim"
 export VISUAL="$EDITOR"
 
 # Completions
@@ -46,18 +45,9 @@ if [ -r "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]; then
 	source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 fi
 
-# Optional: plugins (install: brew install zsh-autosuggestions zsh-syntax-highlighting)
-# Load plugins more efficiently in VS Code
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-    # Minimal plugin loading for VS Code terminal integration
-    if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-        source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    fi
-else
-    # Full plugin loading for other terminals
-    if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-        source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    fi
+# Plugins (install: brew install zsh-autosuggestions zsh-syntax-highlighting)
+if [ -r "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+	source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # Powerlevel10k prompt (Homebrew)
@@ -82,9 +72,6 @@ fi
 # Aliases
 alias ll='ls -lah'
 alias grep='grep --color=auto'
-if command -v podman >/dev/null 2>&1; then
-	alias docker='podman'
-fi
 
 # Keep zsh-syntax-highlighting last for performance/correctness
 # Skip in VS Code initially to avoid terminal integration issues
@@ -99,6 +86,3 @@ fi
 
 # Ensure we end startup in a success state to avoid error marker in first prompt
 :
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

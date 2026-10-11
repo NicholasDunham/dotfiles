@@ -82,6 +82,10 @@ brew "uv"
 brew "wget"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Memory training application

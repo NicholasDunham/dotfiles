@@ -1,5 +1,4 @@
-# Homebrew and PATH
-export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+# Homebrew and PATH (HOMEBREW_PREFIX is set in .zshenv)
 if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
 	eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
 fi
