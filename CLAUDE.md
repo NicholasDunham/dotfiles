@@ -43,8 +43,9 @@ for the full setup guide.
 
 ## Setting up a machine that predates the 2026-10 cleanup
 
-The work laptop and Mac mini still have the old `brewup` alias in a local,
-uncommitted `.zshrc` edit and may have the leftovers listed below.
+The Mac mini still has the old `brewup` alias in a local, uncommitted `.zshrc`
+edit and may have the leftovers listed below. The work laptop was set up on
+2026-10-11.
 
 1. `git pull`. If it's blocked by local edits to the zsh files, review them
    with the user; the `brewup` alias line can be discarded.
@@ -53,6 +54,8 @@ uncommitted `.zshrc` edit and may have the leftovers listed below.
 3. Make sure `neovim` (for `EDITOR`), `zsh-autosuggestions`, and
    `zsh-syntax-highlighting` are installed.
 4. In a new shell, `whence -v brewup` should show `~/bin/brewup`, not an alias.
+   If it's still an alias, check `~/.aliases` (local and untracked; `.zshrc`
+   sources it). On the work laptop the alias was there, not in `.zshrc`.
 
 ## Known leftovers to check for
 
